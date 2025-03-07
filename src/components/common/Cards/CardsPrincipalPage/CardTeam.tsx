@@ -10,7 +10,7 @@ function CardTeam() {
       <div
         style={{
           display: "flex",
-          justifyContent: "flex-end", // Aligns the content to the right
+          justifyContent: "flex-end",
           padding: "16px",
         }}
       >

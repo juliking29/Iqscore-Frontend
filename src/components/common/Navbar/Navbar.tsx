@@ -14,7 +14,7 @@ const NavbarContainer = styled.nav`
   background-color: #181818;
   color: white;
   padding: 12px 24px;
-  width: 100%;
+  width: 100%;|
   position: relative;
   box-sizing: border-box;
   max-width: 100vw;
@@ -202,14 +202,13 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
           ☰
         </HamburgerMenu>
         <NavLinks isOpen={isMenuOpen}>
-          <NavLink to="/equipos">EQUIPOS</NavLink>
-          <NavLink to="/ligas">LIGAS</NavLink>
-          <NavLink to="/chat-ia">CHAT-IA</NavLink>
+          <NavLink to="/">Incio</NavLink>
+          <NavLink to="/league">Ligas</NavLink>
+          <NavLink to="/team">Equipos</NavLink>
         </NavLinks>
       </NavbarLeft>
 
       <NavbarRight>
-        {/* Botón para cambiar el tema - ahora está a la izquierda del buscador */}
         <ThemeToggleButton onClick={toggleTheme} title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
           {theme === 'dark' ? '☀️' : '🌙'}
         </ThemeToggleButton>
