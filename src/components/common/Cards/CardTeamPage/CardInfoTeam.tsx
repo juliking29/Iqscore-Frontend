@@ -1,10 +1,7 @@
-import React from 'react';
-
-const Info: React.FC = () => {
+const Info  = () => {
   const styles = {
     card: {
       backgroundColor: 'transparent',
-      color: 'white',
       width: '100%',
       maxWidth: '400px',
       height: '200px',
@@ -32,11 +29,11 @@ const Info: React.FC = () => {
     },
     infoRow: {
       display: 'flex',
-      marginBottom: '4px',
+      marginBottom: '10px',
     },
     label: {
       fontWeight: 'medium',
-      width: '120px',
+      width: '130px',
     },
   };
 
@@ -53,15 +50,15 @@ const Info: React.FC = () => {
         <h2 style={styles.title}>LIVERPOOL FC</h2>
         <div style={styles.infoRow}>
           <span style={styles.label}>Estadio:</span>
-          <span>Anfield (Liverpool)</span>
+          <span style={styles.label}>Anfield (Liverpool)</span>
         </div>
         <div style={styles.infoRow}>
           <span style={styles.label}>Capacidad:</span>
-          <span>61 276</span>
+          <span style={styles.label}>61 276</span>
         </div>
         <div style={styles.infoRow}>
           <span style={styles.label}>Entrenador:</span>
-          <span></span>
+          <span style={styles.label}>Jhay</span>
         </div>
       </div>
     </div>
