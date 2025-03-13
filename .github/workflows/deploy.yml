@@ -1,0 +1,39 @@
+name: Deploy Frontend to S3
+
+on:
+  push:
+    branches:
+      - main  # Cambia esto si usas otra rama
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v2
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Construir la aplicación
+        run: npm run build
+
+      - name: Subir a S3
+        run: |
+          aws s3 sync ./build s3://iqscore-frontend --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1  # Cambia a tu región
+
+      - name: Invalidar caché en CloudFront
+        run: |
+          aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
+
+          
