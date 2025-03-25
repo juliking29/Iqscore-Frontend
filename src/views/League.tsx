@@ -4,7 +4,7 @@ import CardInfoLeague from '../components/common/Cards/CardLeaguePage/CardInfoLe
 import CardPrincipal from '../components/common/Cards/CardLeaguePage/CardPrincipalLeague';
 import TooInterest from '../components/common/Cards/TooInterest';
 
-const League = () => {
+const League: React.FC = () => {
     return (
         <PageWithLayout>
             <CardInfoLeague />
