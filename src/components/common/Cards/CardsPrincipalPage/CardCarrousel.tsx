@@ -13,9 +13,10 @@ const CarouselContainer = styled.div`
   max-width: 800px;
   height: 400px;
   margin: 0 auto;
-  border-radius: 20px;
+  border-radius: 10px;
   position: relative;
   overflow: hidden;
+  opacity: 0.79;
 `;
 
 const CarouselContent = styled.div<{ currentIndex: number }>`
@@ -39,8 +40,10 @@ const Slide = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 28px;
-  font-weight: bold;
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
   margin-bottom: 24px;
   text-transform: uppercase;
   width: 100%;
@@ -48,6 +51,7 @@ const Title = styled.h2`
 `;
 
 const Subtitle = styled.p`
+  font-family: "Funnel Display", sans-serif;
   font-size: 18px;
   margin-bottom: 24px;
   font-weight: normal;
@@ -56,6 +60,7 @@ const Subtitle = styled.p`
 `;
 
 const BenefitsList = styled.div`
+  font-family: "Funnel Display", sans-serif;
   width: 80%;
   margin: 0 auto 30px auto;
   display: flex;
@@ -118,7 +123,7 @@ const Carousel: React.FC = () => {
 
   const slides = [
     {
-      title: 'PASATE AL PLAN PREMIUM',
+      title: 'CAMBIA AL PLAN PREMIUM',
       subtitle: 'Pasate al plan premium para disfrutar de mejores beneficios:',
       benefits: [
         'Chat de IA para predicciones mas precisas',

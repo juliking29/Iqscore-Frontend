@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Plantilla = () => {
+const Plantilla: React.FC = () => {
     const styles = {
         card: {
             borderRadius: '10px',
@@ -10,7 +10,7 @@ const Plantilla = () => {
             fontFamily: 'Arial, sans-serif',
         },
         title: {
-            textAlign: 'left',
+            textAlign: 'left' as const,
             fontSize: '20px',
             fontWeight: 'bold',
             marginBottom: '20px',
@@ -22,12 +22,12 @@ const Plantilla = () => {
         },
         table: {
             width: '100%',
-            borderCollapse: 'collapse',
+            borderCollapse: 'collapse' as const,
         },
         header: {
             backgroundColor: '#333',
             color: '#fff',
-            textAlign: 'left',
+            textAlign: 'left' as const,
             padding: '10px',
         },
         row: {
@@ -35,7 +35,7 @@ const Plantilla = () => {
         },
         cell: {
             padding: '10px',
-            textAlign: 'left',
+            textAlign: 'left' as const,
         },
     };
 

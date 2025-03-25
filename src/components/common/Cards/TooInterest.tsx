@@ -1,10 +1,10 @@
 import React from 'react';
 
-const TooInterest = () => {
+const TooInterest: React.FC = () => {
     const styles = {
         container: {
             padding: '20px',
-            textAlign: 'left',
+            textAlign: 'left' as const,
             borderRadius: '10px',
             margin: '20px auto',
             maxWidth: '1300px',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ButtonRed from "../../Buttons/ButtonRed10px";
 
-const CardPrincipalTeam = () => {
+const CardPrincipalTeam: React.FC = () => {
     const [activeTab, setActiveTab] = useState('PROXIMOS PARTIDOS');
 
     const matches = [
@@ -23,7 +23,7 @@ const CardPrincipalTeam = () => {
     ];
 
     return (
-        <div className="card-principal-team" style={styles.card}>
+        <div style={styles.container}>
             <div className="card-principal-team__button" style={styles.buttonContainer}>
                 <div style={styles.buttonWrapper}>
                     <ButtonRed 
@@ -40,109 +40,144 @@ const CardPrincipalTeam = () => {
                     />
                 </div>
             </div>
-            <div className="card-principal-team__matches" style={styles.matches}>
-                {activeTab === 'PROXIMOS PARTIDOS' ? (
-                    <>
-                        <h3 style={styles.date}>10/02/2025</h3>
-                        {matches.map((match, index) => {
-                            const { team1, team2, time, odds1, odds2 } = match;
-                            const isOdds1Higher = odds1 > odds2;
+            <div className="card-principal-team" style={styles.card}>
+                <div className="card-principal-team__matches" style={styles.matches}>
+                    {activeTab === 'PROXIMOS PARTIDOS' ? (
+                        <>
+                            <h3 style={styles.date}>10/02/2025</h3>
+                            {matches.map((match, index) => {
+                                const { team1, team2, time, odds1, odds2 } = match;
+                                const isOdds1Higher = odds1 > odds2;
 
-                            return (
-                                <div key={index} style={styles.match}>
-                                    <div style={styles.teamContainer}>
-                                        <span style={styles.team}>{team1}</span>
-                                        <span style={styles.team}>{team2}</span>
-                                    </div>
-                                    <div style={styles.timeOddsContainer}>
-                                        <span style={styles.time}>{time}</span>
-                                        <div style={styles.oddsContainer}>
-                                            <div style={styles.oddsWrapper}>
-                                                <div style={styles.oddsBorder}>
-                                                    <span style={isOdds1Higher ? styles.oddsYellow : styles.odds}>{odds1}</span>
-                                                    <span style={isOdds1Higher ? styles.odds : styles.oddsYellow}>{odds2}</span>
+                                return (
+                                    <div key={index} style={styles.match}>
+                                        <div style={styles.teamContainer}>
+                                            <span style={styles.team}>{team1}</span>
+                                            <span style={styles.team}>{team2}</span>
+                                        </div>
+                                        <div style={styles.timeOddsContainer}>
+                                            <span style={styles.time}>{time}</span>
+                                            <div style={styles.oddsContainer}>
+                                                <div style={styles.oddsWrapper}>
+                                                    <div style={styles.oddsBorder}>
+                                                        <span style={isOdds1Higher ? styles.oddsYellow : styles.odds}>{odds1}</span>
+                                                        <span style={isOdds1Higher ? styles.odds : styles.oddsYellow}>{odds2}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            );
-                        })}
-                    </>
-                ) : (
-                    <div style={styles.standings}>
-                        <table style={styles.table}>
-                            <thead>
-                                <tr>
-                                    <th style={styles.tableHeader}>#</th>
-                                    <th style={styles.tableHeader}>Equipo</th>
-                                    <th style={styles.tableHeader}>Pts</th>
-                                    <th style={styles.tableHeader}>G</th>
-                                    <th style={styles.tableHeader}>E</th>
-                                    <th style={styles.tableHeader}>P</th>
-                                    <th style={styles.tableHeader}>DG</th>
-                                    <th style={styles.tableHeader}>Resultados</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {standings.map((team) => (
-                                    <tr key={team.position}>
-                                        <td style={getPositionStyle(team.position)}>{team.position}</td>
-                                        <td>{team.team}</td>
-                                        <td>{team.points}</td>
-                                        <td>{team.wins}</td>
-                                        <td>{team.draws}</td>
-                                        <td>{team.losses}</td>
-                                        <td>{team.goalDifference}</td>
-                                        <td style={styles.resultsCell}>
-                                            {team.results.map((result, index) => {
-                                                const resultStyle = result === 'G' ? styles.resultWin : result === 'P' ? styles.resultLoss : styles.resultDraw;
-                                                return (
-                                                    <div key={index} style={{ ...styles.resultBox, ...resultStyle }}>
-                                                        <span style={styles.resultText}>{result}</span>
-                                                    </div>
-                                                );
-                                            })}
-                                        </td>
+                                );
+                            })}
+                        </>
+                    ) : (
+                        <div style={styles.standings}>
+                            <table style={styles.table}>
+                                <thead>
+                                    <tr>
+                                        <th style={styles.tableHeader}>#</th>
+                                        <th style={styles.tableHeader}>Equipo</th>
+                                        <th style={styles.tableHeader}>Pts</th>
+                                        <th style={styles.tableHeader}>G</th>
+                                        <th style={styles.tableHeader}>E</th>
+                                        <th style={styles.tableHeader}>P</th>
+                                        <th style={styles.tableHeader}>DG</th>
+                                        <th style={styles.tableHeader}>Resultados</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
+                                </thead>
+                                <tbody>
+                                    {standings.map((team) => (
+                                        <tr key={team.position}>
+                                            <td style={getPositionStyle(team.position)}>{team.position}</td>
+                                            <td>{team.team}</td>
+                                            <td>{team.points}</td>
+                                            <td>{team.wins}</td>
+                                            <td>{team.draws}</td>
+                                            <td>{team.losses}</td>
+                                            <td>{team.goalDifference}</td>
+                                            <td style={styles.resultsCell}>
+                                                {team.results.map((result, index) => {
+                                                    const resultStyle = result === 'G' ? styles.resultWin : result === 'P' ? styles.resultLoss : styles.resultDraw;
+                                                    return (
+                                                        <div key={index} style={{ ...styles.resultBox, ...resultStyle }}>
+                                                            <span style={styles.resultText}>{result}</span>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
 };
 
-const getPositionStyle = (position) => {
-    if (position === 1) return { backgroundColor: '#EFB810', color: 'white', padding: '5px', borderRadius: '5px', width: '15px', height: '20px', textAlign: 'center' };
-    if (position === 2) return { backgroundColor: '#7F0029', color: 'white', padding: '5px', borderRadius: '5px', width: '15px', height: '20px', textAlign: 'center' };
-    return { backgroundColor: '#0071E3', color: 'white', padding: '5px', borderRadius: '5px', width: '15px', height: '0px', textAlign: 'center' };
+const getPositionStyle = (position: number) => {
+    if (position === 1) {
+        return {
+            backgroundColor: '#EFB810',
+            color: 'white',
+            padding: '5px',
+            borderRadius: '5px',
+            width: '15px',
+            height: '20px',
+            textAlign: 'center' as const,
+        };
+    }
+    if (position === 2) {
+        return {
+            backgroundColor: '#7F0029',
+            color: 'white',
+            padding: '5px',
+            borderRadius: '5px',
+            width: '15px',
+            height: '20px',
+            textAlign: 'center' as const,
+        };
+    }
+    return {
+        backgroundColor: '#0071E3',
+        color: 'white',
+        padding: '5px',
+        borderRadius: '5px',
+        width: '15px',
+        height: '0px',
+        textAlign: 'center' as const,
+    };
 };
 
 const styles = {
-    card: {
-        justifyContent: 'center',
+    container: {
         width: '75%',
-        borderRadius: '10px',
-        padding: '20px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         margin: '0 auto',
-        backgroundColor: 'rgba(24, 24, 24, 0.7)',  
-        color: 'white',
+        display: 'flex',
+        flexDirection: 'column' as const,
+        gap: '20px',
     },
     buttonContainer: {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '20px',
     },
     buttonWrapper: {
         margin: '0 35px',
     },
+    card: {
+        justifyContent: 'center',
+        width: '100%',
+        borderRadius: '10px',
+        padding: '20px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        backgroundColor: 'rgba(24, 24, 24, 0.7)',  
+        color: 'white',
+    },
     matches: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as const,
     },
     date: {
         fontSize: '18px',
@@ -160,12 +195,12 @@ const styles = {
     },
     teamContainer: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as const,
         alignItems: 'flex-start',
         flex: 1,
     },
     team: {
-        textAlign: 'left',
+        textAlign: 'left' as const,
     },
     timeOddsContainer: {
         display: 'flex',
@@ -177,17 +212,17 @@ const styles = {
     },
     oddsContainer: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as const,
         alignItems: 'flex-end',
     },
     oddsWrapper: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as const,
         alignItems: 'center',
     },
     oddsBorder: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as const,
         borderRadius: '10px',
         overflow: 'hidden',
     },
@@ -196,14 +231,14 @@ const styles = {
         fontWeight: 'bold',
         padding: '5px',
         width: '40px',
-        textAlign: 'center',
+        textAlign: 'center' as const,
     },
     oddsYellow: {
         backgroundColor: '#EFB810',
         fontWeight: 'bold',
         padding: '5px',
         width: '40px',
-        textAlign: 'center',
+        textAlign: 'center' as const,
     },
     standings: {
         marginTop: '20px',

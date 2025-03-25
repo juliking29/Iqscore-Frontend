@@ -25,7 +25,7 @@ const Info  = () => {
     },
     info: {
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: 'column' as const,
     },
     infoRow: {
       display: 'flex',

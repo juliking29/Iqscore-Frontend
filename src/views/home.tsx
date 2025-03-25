@@ -4,11 +4,15 @@ import CardLeague from '../components/common/Cards/CardsPrincipalPage/CardLeague
 import CardTeam from '../components/common/Cards/CardsPrincipalPage/CardTeam';
 import CardCarrousel from '../components/common/Cards/CardsPrincipalPage/CardCarrousel';
 import CardPrincipal from '../components/common/Cards/CardsPrincipalPage/CardPrincipal'
+import TooInterest from '../components/common/Cards/TooInterest';
+import Search from '../components/common/Search';
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <PageWithLayout>
-      <div style={styles.cardsContainer}>
+      <div style={{ marginLeft: '45px' }}>
+        <Search />
+      </div>      <div style={styles.cardsContainer}>
         <div style={styles.leftColumn}>
           <CardLeague />
         </div>
@@ -21,6 +25,9 @@ const Home = () => {
       </div>
       <div>
         <CardPrincipal />
+      </div>
+      <div>
+        <TooInterest />
       </div>
     </PageWithLayout>
   );

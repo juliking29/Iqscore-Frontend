@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-import ButtonRed from '../../Buttons/ButtonRed10px';
+import React from 'react';
 
-const CardPrincipal = () => {
-    const [activeTab, setActiveTab] = useState('PRINCIPALES CUOTAS');
+const CardPrincipal: React.FC = () => {
     
     const matches = [
         {
-            date: '10/02/2025',
+            date: 'Partidos de hoy',
             team1: { name: 'Liverpool', logo: 'https://brandlogos.net/wp-content/uploads/2025/02/liverpool_f.c.-logo_brandlogos.net_vr9dx-300x548.png' },
             team2: { name: 'Manchester City', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/800px-Manchester_City_FC_badge.svg.png' },
             league: 'Premier League',
@@ -43,21 +41,14 @@ const CardPrincipal = () => {
         }
     ];
 
-    const favorites = [
-        { logo: 'https://image-service.onefootball.com/transform?w=256&dpr=2&image=https://images.onefootball.com/icons/leagueColoredCompetition/128/9.png' },
-        { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/BetPlay-Dimayor_logo.svg/1200px-BetPlay-Dimayor_logo.svg.png' },
-        { logo: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg' },
-        { logo: 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg' },
-    ];
-
     const styles = {
         cardPrincipal: {
-            backgroundColor: '#1a1a1a',
+            backgroundColor: 'rgba(24, 24, 24, 0.7)',  
             borderRadius: '10px',
             overflow: 'hidden',
             color: 'white',
             fontFamily: 'Arial, sans-serif',
-            maxWidth: '1000px',
+            maxWidth: '850px',
             margin: '0 auto'
         },
         tabButtons: {
@@ -76,11 +67,12 @@ const CardPrincipal = () => {
         date: {
             padding: '10px',
             fontSize: '14px',
-            color: '#ccc'
+            color: '#ccc',
+            fontFamily: '"Funnel Display", sans-serif'
         },
         matchRow: {
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'space-between' as const,
             alignItems: 'center',
             padding: '15px 10px',
             borderBottom: '1px solid #333'
@@ -88,22 +80,24 @@ const CardPrincipal = () => {
         teams: {
             flex: 2,
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'column' as const,
             gap: '10px'
         },
         team: {
             display: 'flex',
             alignItems: 'center',
-            gap: '10px'
+            gap: '10px',
+            fontFamily: '"Funnel Display", sans-serif'
         },
         teamLogo: {
             width: '24px',
             height: '24px',
-            objectFit: 'contain'
+            objectFit: 'contain' as const,
         },
         matchInfo: {
             flex: 1,
-            textAlign: 'center'
+            textAlign: 'center' as const,
+            fontFamily: '"Funnel Display", sans-serif'
         },
         league: {
             fontSize: '14px',
@@ -114,7 +108,7 @@ const CardPrincipal = () => {
         },
         oddsBorder: {
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'column' as const,
             borderRadius: '10px',
             overflow: 'hidden',
         },
@@ -151,73 +145,45 @@ const CardPrincipal = () => {
 
     return (
         <div style={styles.cardPrincipal}>
-            <div style={styles.tabButtons}>
-                <ButtonRed 
-                    text="PRINCIPALES CUOTAS" 
-                    onClick={() => setActiveTab('PRINCIPALES CUOTAS')}
-                    isActive={activeTab === 'PRINCIPALES CUOTAS'}
-                />
-                <ButtonRed 
-                    text="FAVORITOS" 
-                    onClick={() => setActiveTab('FAVORITOS')}
-                    isActive={activeTab === 'FAVORITOS'}
-                />
-            </div>
-            
             <div style={styles.matchesContainer}>
-                {activeTab === 'PRINCIPALES CUOTAS' ? (
-                    <>
-                        <div style={styles.date}>{matches[0].date}</div>
-                        {matches.map((match, index) => {
-                            const isOdds1Higher = parseFloat(match.odds.team1) > parseFloat(match.odds.team2);
-                            return (
-                                <div style={styles.matchRow} key={index}>
-                                    <div style={styles.teams}>
-                                        <div style={styles.team}>
-                                            <img 
-                                                src={match.team1.logo} 
-                                                alt={match.team1.name} 
-                                                style={styles.teamLogo} 
-                                            />
-                                            <span>{match.team1.name}</span>
-                                        </div>
-                                        <div style={styles.team}>
-                                            <img 
-                                                src={match.team2.logo} 
-                                                alt={match.team2.name} 
-                                                style={styles.teamLogo} 
-                                            />
-                                            <span>{match.team2.name}</span>
-                                        </div>
+                <div style={styles.date}>{matches[0].date}</div>
+                    {matches.map((match, index) => {
+                        const isOdds1Higher = parseFloat(match.odds.team1) > parseFloat(match.odds.team2);
+                        return (
+                            <div style={styles.matchRow} key={index}>
+                                <div style={styles.teams}>
+                                    <div style={styles.team}>
+                                        <img 
+                                            src={match.team1.logo} 
+                                            alt={match.team1.name} 
+                                            style={styles.teamLogo} 
+                                        />
+                                        <span>{match.team1.name}</span>
                                     </div>
-                                    
-                                    <div style={styles.matchInfo}>
-                                        <div style={styles.league}>{match.league}</div>
-                                        <div style={styles.time}>{match.time}</div>
+                                    <div style={styles.team}>
+                                        <img 
+                                            src={match.team2.logo} 
+                                            alt={match.team2.name} 
+                                            style={styles.teamLogo} 
+                                        />
+                                        <span>{match.team2.name}</span>
                                     </div>
-                                    
-                                    <div style={styles.oddsBorder}>
-                                        <div style={{...styles.odds, ...(isOdds1Higher ? styles.oddsYellow : {})}}>
-                                            {match.odds.team1}
-                                        </div>
-                                        <div style={{...styles.odds, ...(isOdds1Higher ? {} : styles.oddsYellow)}}>
-                                            {match.odds.team2}
-                                        </div>
+                                </div>                                
+                                <div style={styles.matchInfo}>
+                                    <div style={styles.league}>{match.league}</div>
+                                    <div style={styles.time}>{match.time}</div>
+                                </div>                
+                                <div style={styles.oddsBorder}>
+                                    <div style={{...styles.odds, ...(isOdds1Higher ? styles.oddsYellow : {})}}>
+                                        {match.odds.team1}
+                                    </div>
+                                    <div style={{...styles.odds, ...(isOdds1Higher ? {} : styles.oddsYellow)}}>
+                                        {match.odds.team2}
                                     </div>
                                 </div>
-                            );
-                        })}
-                    </>
-                ) : (
-                    <div style={styles.favoritesContainer}>
-                        {favorites.map((favorite, index) => (
-                            <div style={styles.favorite} key={index}>
-                                <img src={favorite.logo} alt={favorite.name} style={styles.favoriteLogo} />
-                                <span>{favorite.name}</span>
                             </div>
-                        ))}
-                    </div>
-                )}
+                        );
+                    })}
             </div>
         </div>
     );

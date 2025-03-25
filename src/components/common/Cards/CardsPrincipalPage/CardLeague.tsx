@@ -7,7 +7,7 @@ function CardLeague() {
     ];
   
     return (
-      <div className="flex flex-col items-center" style={{ backgroundColor: "#BEBEBE", padding: "16px", borderRadius: "25px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", width: "80px" }}>
+      <div className="flex flex-col items-center" style={{ backgroundColor: "#BEBEBE", padding: "16px", borderRadius: "10px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", width: "80px" }}>
         {imageLinks.map((link, index) => (
           <div key={index} style={{ marginBottom: "16px" }}>
             <img
