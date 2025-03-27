@@ -12,8 +12,9 @@ const SearchInputWrapper = styled.div`
 `;
 
 const SearchInput = styled.input`
+  font-family: "Funnel Display", sans-serif;
   width: 100%;
-  background-color: #3B3B3C;
+  background-color: #BEBEBE;
   color: white;
   border-radius: 9999px;
   padding: 8px 16px 8px 40px;
@@ -22,7 +23,7 @@ const SearchInput = styled.input`
   box-sizing: border-box;
 
   &::placeholder {
-    color: #a0a0a0;
+    color: #181818;
   }
 `;
 
@@ -33,7 +34,7 @@ const SearchIcon = styled.button`
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #a0a0a0;
+  color: #181818;
   width: 20px;
   height: 20px;
   padding: 0;

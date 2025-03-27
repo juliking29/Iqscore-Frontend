@@ -25,8 +25,8 @@ const LayoutContainer = styled.div<ThemeProps>`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: ${props => props.isDark ? '#1a2c38' : '#F7F3E3'};
-  color: ${props => props.isDark ? '#F7F3E3' : '#1a2c38'};
+  background-color: ${props => props.isDark ? '#10242c' : '#EAF9D9'};
+  color: ${props => props.isDark ? '#EAF9D9' : '#10242c'};
   transition: background-color 0.5s ease, color 0.3s ease;
 `;
 

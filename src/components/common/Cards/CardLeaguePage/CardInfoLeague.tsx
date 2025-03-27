@@ -26,6 +26,8 @@ const InfoLeague = () => {
       marginBottom: '8px',
     },
     info: {
+      fontFamily: '"Funnel Display", sans-serif',
+
       display: 'flex',
       flexDirection: 'column',
     },

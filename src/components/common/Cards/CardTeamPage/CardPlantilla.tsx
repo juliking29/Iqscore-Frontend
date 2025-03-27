@@ -10,6 +10,7 @@ const Plantilla: React.FC = () => {
             fontFamily: 'Arial, sans-serif',
         },
         title: {
+            fontFamily: '"Funnel Display", sans-serif',
             textAlign: 'left' as const,
             fontSize: '20px',
             fontWeight: 'bold',
@@ -21,6 +22,7 @@ const Plantilla: React.FC = () => {
             gap: '20px',
         },
         table: {
+            fontFamily: '"Funnel Display", sans-serif',
             width: '100%',
             borderCollapse: 'collapse' as const,
         },

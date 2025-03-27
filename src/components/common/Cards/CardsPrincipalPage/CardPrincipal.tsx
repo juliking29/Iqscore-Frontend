@@ -43,7 +43,7 @@ const CardPrincipal: React.FC = () => {
 
     const styles = {
         cardPrincipal: {
-            backgroundColor: 'rgba(24, 24, 24, 0.7)',  
+            backgroundColor: '#2F4553',  
             borderRadius: '10px',
             overflow: 'hidden',
             color: 'white',

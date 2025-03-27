@@ -24,6 +24,8 @@ const Info  = () => {
       marginBottom: '8px',
     },
     info: {
+      fontFamily: '"Funnel Display", sans-serif',
+
       display: 'flex',
       flexDirection: 'column' as const,
     },
@@ -47,7 +49,7 @@ const Info  = () => {
         />
       </div>
       <div style={styles.info}>
-        <h2 style={styles.title}>LIVERPOOL FC</h2>
+        <h2 style={styles.title}>Liverpool fc</h2>
         <div style={styles.infoRow}>
           <span style={styles.label}>Estadio:</span>
           <span style={styles.label}>Anfield (Liverpool)</span>

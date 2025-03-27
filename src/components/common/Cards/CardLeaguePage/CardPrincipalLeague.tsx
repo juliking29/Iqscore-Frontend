@@ -91,13 +91,13 @@ const styles: StyleProperties = {
         margin: '0 35px',
     },
     card: {
+        fontFamily: '"Funnel Display", sans-serif',
         justifyContent: 'center',
         width: '75%',
         borderRadius: '10px',
         padding: '20px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         margin: '0 auto',
-        backgroundColor: 'rgba(24, 24, 24, 0.7)',  
+        backgroundColor: '#2F4553',  
         color: 'white',
     },
     matches: {

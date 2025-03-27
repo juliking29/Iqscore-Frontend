@@ -80,8 +80,8 @@ const NavLinks = styled.div<{ isOpen: boolean }>`
 `;
 
 const NavLink = styled(Link)`
-    font-family: "Funnel Display", sans-serif;
-  font-size: 22px;
+  font-family: "Funnel Display", sans-serif;
+  font-size: 16px;
   font-weight: 500;
   text-decoration: none;
   color: white;
@@ -135,6 +135,7 @@ const SearchInputWrapper = styled.div`
 `;
 
 const SearchInput = styled.input`
+  font-family: "Funnel Display", sans-serif;
   width: 100%;
   background-color: #3B3B3C;
   color: white;
@@ -241,10 +242,10 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
             ☰
           </HamburgerMenu>
           <NavLinks isOpen={isMenuOpen}>
-            <NavLink to="/">Inicio</NavLink>
-            <NavLink to="/leagues">Ligas</NavLink>
-            <NavLink to="/teams">Equipos</NavLink>
-            <NavLink to="/Config">Configuración</NavLink>
+            <NavLink to="/">INICIO</NavLink>
+            <NavLink to="/leagues">LIGAS</NavLink>
+            <NavLink to="/teams">EQUIPOS</NavLink>
+            <NavLink to="/Config">CONFIGURACIÓN</NavLink>
           </NavLinks>
         </NavbarLeft>
 

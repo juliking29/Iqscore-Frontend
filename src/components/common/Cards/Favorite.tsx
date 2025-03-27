@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const NavContainer = styled.div`
     width: 230px;
-    background-color: #181818;
+    background-color: #213743;
     color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -11,7 +11,7 @@ const NavContainer = styled.div`
 
 const SectionTitle = styled.h3`
     font-family: "Funnel Display", sans-serif;
-    font-weight: 400;  
+    font-weight: 700;
     font-style: normal;
     border-bottom: 2px solid #ffcc00;
     padding-bottom: 10px;
@@ -26,7 +26,7 @@ const ListItem = styled.li`
 const Favorite: React.FC = () => {
     return (
         <NavContainer>
-            <SectionTitle>Favoritos</SectionTitle>
+            <SectionTitle>FAVORITOS</SectionTitle>
             <ul>
                 <ListItem>Premier League</ListItem>
                 <ListItem>La Liga</ListItem>

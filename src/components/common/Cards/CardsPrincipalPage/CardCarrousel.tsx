@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ButtonGold from '../../Buttons/ButtonGold'; 
+import ButtonGold from '../../Buttons/ButtonGreen'; 
 
 const CarouselContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #181818;
+  background-color: #2F4553;
   color: white;
   width: 100%;
   max-width: 800px;
@@ -16,7 +16,6 @@ const CarouselContainer = styled.div`
   border-radius: 10px;
   position: relative;
   overflow: hidden;
-  opacity: 0.79;
 `;
 
 const CarouselContent = styled.div<{ currentIndex: number }>`
@@ -40,8 +39,8 @@ const Slide = styled.div`
 `;
 
 const Title = styled.h2`
-  font-family: "Alfa Slab One", serif;
-  font-weight: 400;
+    font-family: "Funnel Display", sans-serif;
+    font-weight: 700;
   font-style: normal;
   font-size: 32px;
   margin-bottom: 24px;

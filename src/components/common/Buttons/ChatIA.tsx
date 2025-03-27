@@ -27,15 +27,15 @@ const ChatContainer = styled.div<ChatContainerProps>`
 `;
 
 const SidebarButton = styled.div<ChatContainerProps>`
-  font-family: "Alfa Slab One", serif;
-  font-weight: 400;
+    font-family: "Funnel Display", sans-serif;
+    font-weight: 700;
   font-style: normal;
   position: fixed;
   right: ${props => (props.isOpen ? "450px" : "0")};
   top: 20%;
   width: 60px;
   height: 230px;
-  background-color: #7f0029;
+  background-color: #28a745;
   color: white;
   display: flex;
   flex-direction: column;
@@ -45,18 +45,19 @@ const SidebarButton = styled.div<ChatContainerProps>`
   letter-spacing: 8px;
   cursor: pointer;
   line-height: 1.5;
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px; 
   box-shadow: -3px 0 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   z-index: 999;
 
   &:hover {
-    background-color: #9a0033;
+    background-color:rgb(30, 125, 52);
   }
 `;
 
 const WelcomeMessage = styled.div`
-  background-color: #efb810;
+  font-family: "Funnel Display", sans-serif;
+  background-color: #1a2c38;
   padding: 15px;
   margin: 20px 15px;
   border-radius: 8px;

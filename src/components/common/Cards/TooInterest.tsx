@@ -3,12 +3,12 @@ import React from 'react';
 const TooInterest: React.FC = () => {
     const styles = {
         container: {
+            fontFamily: '"Funnel Display", sans-serif',
             padding: '20px',
             textAlign: 'left' as const,
             borderRadius: '10px',
             margin: '20px auto',
             maxWidth: '1300px',
-            fontFamily: 'Arial, sans-serif',
         },
         title: {
             fontSize: '20px',

@@ -167,12 +167,12 @@ const styles = {
         margin: '0 35px',
     },
     card: {
+        fontFamily: '"Funnel Display", sans-serif',
         justifyContent: 'center',
         width: '100%',
         borderRadius: '10px',
         padding: '20px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        backgroundColor: 'rgba(24, 24, 24, 0.7)',  
+        backgroundColor: '#2F4553',  
         color: 'white',
     },
     matches: {

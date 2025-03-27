@@ -9,7 +9,7 @@ const ButtonGold: React.FC<ButtonProps> = ({ text, onClick }) => {
   return (
     <button
       style={{
-        backgroundColor: "#EFB810",
+        backgroundColor: "#28a745 ",
         color: "white",
         fontWeight: "bold",
         padding: "10px 16px",
