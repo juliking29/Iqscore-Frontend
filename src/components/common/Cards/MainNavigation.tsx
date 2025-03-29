@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const NavContainer = styled.div`
     width: 230px;
-    background-color: #213743;
+    background-color: #192E36;
     color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -12,7 +12,8 @@ const NavContainer = styled.div`
 const SectionTitle = styled.h3`
     font-family: "Funnel Display", sans-serif;
     font-weight: 700;
-    border-bottom: 2px solid #ffcc00;
+    font-style: normal;
+    border-bottom: 2px solid #FDDDFC;
     padding-bottom: 10px;
 `;
 
@@ -22,9 +23,10 @@ const ListItem = styled.li`
     margin: 10px 0;
 `;
 
-const MainNavigation: React.FC = () => {
+const Navigation: React.FC = () => {
     return (
         <NavContainer>
+            {/* Sección de Populares */}
             <SectionTitle>POPULARES</SectionTitle>
             <ul>
                 <ListItem>Premier League</ListItem>
@@ -36,6 +38,8 @@ const MainNavigation: React.FC = () => {
                 <ListItem>Conmebol Libertadores</ListItem>
                 <ListItem>Copa Sudamericana</ListItem>
             </ul>
+
+            {/* Sección de Equipos Principales */}
             <SectionTitle>EQUIPOS PRINCIPALES</SectionTitle>
             <ul>
                 <ListItem>Real Madrid</ListItem>
@@ -48,6 +52,24 @@ const MainNavigation: React.FC = () => {
                 <ListItem>Paris SG</ListItem>
                 <ListItem>Arsenal</ListItem>
             </ul>
+
+            {/* Sección de Favoritos */}
+            <SectionTitle>FAVORITOS</SectionTitle>
+            <ul>
+                <ListItem>Premier League</ListItem>
+                <ListItem>La Liga</ListItem>
+                <ListItem>Serie A</ListItem>
+                <ListItem>Champions League</ListItem>
+                <ListItem>Europa League</ListItem>
+                <ListItem>Bundesliga</ListItem>
+                <ListItem>Conmebol Libertadores</ListItem>
+                <ListItem>Real Madrid</ListItem>
+                <ListItem>Juventus</ListItem>
+                <ListItem>America de Cali</ListItem>
+                <ListItem>Bucaramanga FC</ListItem>
+            </ul>
+
+            {/* Sección Principal */}
             <SectionTitle>PRINCIPAL</SectionTitle>
             <ul>
                 <ListItem>EQUIPOS</ListItem>
@@ -57,4 +79,4 @@ const MainNavigation: React.FC = () => {
     );
 };
 
-export default MainNavigation;
+export default Navigation;

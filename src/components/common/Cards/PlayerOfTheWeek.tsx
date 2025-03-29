@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SidebarContainer = styled.div`
-  background-color: #213743;
+  background-color: #192E36;
   color: #fff;
   padding: 20px;
   width: 230px;
@@ -14,7 +14,7 @@ const SectionTitle = styled.h3`
     font-family: "Funnel Display", sans-serif;
     font-weight: 700; 
   font-style: normal;
-  border-bottom: 2px solid #ffcc00;
+  border-bottom: 2px solid #FDDDFC;
   padding-bottom: 10px;
   margin: 0;
 `;

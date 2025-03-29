@@ -48,7 +48,7 @@ const CardPrincipal: React.FC = () => {
             overflow: 'hidden',
             color: 'white',
             fontFamily: 'Arial, sans-serif',
-            maxWidth: '850px',
+            maxWidth: '800px',
             margin: '0 auto'
         },
         tabButtons: {

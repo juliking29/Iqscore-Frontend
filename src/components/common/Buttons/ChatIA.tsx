@@ -32,9 +32,9 @@ const SidebarButton = styled.div<ChatContainerProps>`
   font-style: normal;
   position: fixed;
   right: ${props => (props.isOpen ? "450px" : "0")};
-  top: 20%;
+  top: 80%;
   width: 60px;
-  height: 230px;
+  height: 70px;
   background-color: #28a745;
   color: white;
   display: flex;
@@ -107,12 +107,6 @@ const ChatIA: React.FC = () => {
     <ChatWrapper>
       <SidebarButton onClick={toggleChat} isOpen={isOpen}>
         C<br />
-        H<br />
-        A<br />
-        T<br />
-        <br />
-        I<br />
-        A
       </SidebarButton>
 
       <ChatContainer isOpen={isOpen}>

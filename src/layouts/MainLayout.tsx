@@ -1,13 +1,9 @@
-import React, { useEffect, ReactNode } from 'react';
+import React, { useEffect, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import Navbar from '../components/common/Navbar/Navbar';
 import Footer from '../components/common/footer/Footer';
-import MainNavigation from '../components/common/Cards/MainNavigation';
-import PlayerOfTheWeek from '../components/common/Cards/PlayerOfTheWeek';
 import SliderHome from '../components/common/SliderHome';
-import Favorite from '../components/common/Cards/Favorite';
 import ChatButtonComponent from '../components/common/Buttons/ChatIA';
-import Ad1 from '../components/common/Cards/ADS/Ad1';
 import { useTheme } from '../contexts/ThemeContext';
 
 interface MainLayoutProps {
@@ -16,6 +12,10 @@ interface MainLayoutProps {
 
 interface ThemeProps {
   isDark: boolean;
+}
+
+interface LayoutProps {
+  isSidebarOpen: boolean;
 }
 
 const LayoutContainer = styled.div<ThemeProps>`
@@ -30,30 +30,32 @@ const LayoutContainer = styled.div<ThemeProps>`
   transition: background-color 0.5s ease, color 0.3s ease;
 `;
 
-const MainContent = styled.main`
+const MainContent = styled.main<LayoutProps>`
   flex: 1;
   display: flex;
-  padding: 20px;
-  margin-top: -40px; // Este margen puede ser necesario si el Navbar tiene altura
+  margin-top: 70px;
+  margin-left: ${props => props.isSidebarOpen ? '230px' : '60px'};
+  transition: margin-left 0.3s ease;
 `;
 
-const NavigationWrapper = styled.div`
-  width: 250px;
+const NavbarWrapper = styled.div<LayoutProps>`
+  margin-left: ${props => props.isSidebarOpen ? '230px' : '60px'};
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: margin-left 0.3s ease;
 `;
 
-const ContentWrapper = styled.div`
-  width: 0%;
+const ContentWrapper = styled.div<LayoutProps>`
   flex: 1;
-  padding-left: 20px;
-`;
-
-const FavoritesWrapper = styled.div`
-  flex-shrink: 0; // Evita que se reduzca el tamaño
+  padding: 20px;
+  transition: margin-left 0.3s ease;
 `;
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     document.body.style.margin = '0';
@@ -61,7 +63,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     document.documentElement.style.margin = '0';
     document.documentElement.style.padding = '0';
     document.documentElement.style.boxSizing = 'border-box';
-  
+    
     return () => {
       document.body.style.margin = '';
       document.body.style.padding = '';
@@ -71,23 +73,23 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     };
   }, []);
 
+  const handleSidebarToggle = (isOpen: boolean) => {
+    setIsSidebarOpen(isOpen);
+  };
+
   return (
     <LayoutContainer isDark={isDark}>
-      <Navbar />
-      <MainContent>
-        <NavigationWrapper>
-          <MainNavigation />
-          <PlayerOfTheWeek />
-        </NavigationWrapper>
-        <ContentWrapper>
-          <SliderHome /> <br />
+      <NavbarWrapper isSidebarOpen={isSidebarOpen}>
+        <Navbar onSidebarToggle={handleSidebarToggle} />
+      </NavbarWrapper>
+
+      <MainContent isSidebarOpen={isSidebarOpen}>
+        <ContentWrapper isSidebarOpen={isSidebarOpen}>
           {children}
         </ContentWrapper>
-        <FavoritesWrapper>
-          <Favorite />
-          <Ad1 />
-        </FavoritesWrapper>
       </MainContent>
+
+      <SliderHome />
       <Footer />
       <ChatButtonComponent />
     </LayoutContainer>

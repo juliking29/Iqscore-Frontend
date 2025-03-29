@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
-  background-color: #BEBEBE;
-  color: #333333;
+    font-family: "Funnel Display", sans-serif;
+  background-color: #192E36;
+  color: white;
   padding: 20px;
   text-align: center;
   width: 100%;
