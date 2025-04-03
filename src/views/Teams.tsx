@@ -1,13 +1,10 @@
 import React from "react";
 import MainLayout from "../layouts/MainLayout";
-import TeamsCard from "../components/common/Cards/CardsTeamsPage/TeamsCard";
-import TooInterest from "../components/common/Cards/TooInterest";
 
 const Teams: React.FC = () => {
     return (
         <MainLayout>
-            <TeamsCard />
-            <TooInterest />
+            <h1>sa</h1>
         </MainLayout>
     );
 }; 

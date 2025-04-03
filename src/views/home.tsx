@@ -1,65 +1,63 @@
 import React from 'react';
+import styled from 'styled-components';
 import PageWithLayout from '../components/PageWithLayout';
-import CardLeague from '../components/common/Cards/CardsPrincipalPage/CardLeague';
-import CardTeam from '../components/common/Cards/CardsPrincipalPage/CardTeam';
-import CardCarrousel from '../components/common/Cards/CardsPrincipalPage/CardCarrousel';
-import CardPrincipal from '../components/common/Cards/CardsPrincipalPage/CardPrincipal'
-import TooInterest from '../components/common/Cards/TooInterest';
+import PartidosTop from '../components/common/Cards/TOPS/PartidosTop';
+import LeagueTops from '../components/common/Cards/TOPS/LeaguesTop';
+import PlanPremium from '../components/common/Cards/ADS/PlanPremim';
+import PartidosDelDia from '../components/common/PrincipalPage/GameDay';
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 40% 58%;
+  width: 100%;
+  gap: 2rem;
+  padding: 30px 0;
+  max-width: 1240px;
+  margin: 0 auto;
+`;
+
+const LeftColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const RightColumn = styled.div`
+  height: 100%;
+`;
+
+const Section = styled.div`
+  width: 100%;
+  margin-bottom: 24px;
+`;
 
 const Home: React.FC = () => {
   return (
     <PageWithLayout>
-      <div style={{ marginLeft: '45px' }}>
-      </div>      <div style={styles.cardsContainer}>
-        <div style={styles.leftColumn}>
-          <CardLeague />
-        </div>
-        <div style={styles.centerColumn}>
-          <CardCarrousel />
-        </div>
-        <div style={styles.rightColumn}>
-          <CardTeam />
-        </div>
-      </div>
-      <div>
-        <CardPrincipal />
-      </div>
-      <div>
-        <TooInterest />
-      </div>
+      <Container>
+        {/* Columna izquierda */}
+        <LeftColumn>
+          <Section>
+            <PlanPremium />
+          </Section>
+          
+          <Section>
+            <LeagueTops />
+          </Section>
+        </LeftColumn>
+        
+        {/* Columna derecha */}
+        <RightColumn>
+          <Section>
+            <PartidosTop />
+          </Section>
+          
+          <Section>
+            <PartidosDelDia />
+          </Section>
+        </RightColumn>
+      </Container>
     </PageWithLayout>
   );
-};
-
-const styles = {
-  cardsContainer: {
-    display: 'flex',
-    justifyContent: 'space-between', 
-    alignItems: 'center', 
-    padding: '20px',
-  },
-  leftColumn: {
-    display: 'flex',
-    flexDirection: 'column' as 'column', 
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '15%',
-  },
-  rightColumn: {
-    display: 'flex',
-    flexDirection: 'column' as 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '15%',
-  },
-  centerColumn: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '70%',
-    borderRadius: '10px',
-    padding: '20px',
-  },
 };
 
 export default Home;
