@@ -1,6 +1,7 @@
 import Navbar from '../components/common/Navbar/Navbar.tsx';
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import Footer from '../components/common/footer/Footer.tsx';
 
 const GlobalStyle = createGlobalStyle`
   body, html {
@@ -36,6 +37,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <MainContainer>
                 <Navbar />
                 <Content>{children}</Content>
+                <Footer />
             </MainContainer>
         </>
     );

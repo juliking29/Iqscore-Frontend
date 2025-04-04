@@ -12,7 +12,6 @@ const NavbarContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 10px 20px #111517, 0 0 0px #BEBEBE;
   height: 50px;
   position: relative;
   z-index: 100;

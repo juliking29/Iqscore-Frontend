@@ -1,27 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SidebarContainer = styled.div`
-  background-color: #181818;
+const AdContainer = styled.div`
+  background-color: #1e2124;
   color: #fff;
   padding: 20px;
-  width: 230px;
-  margin-top: 20px;
-  border-radius: 8px;
+  width: 850px;
+  height: 30px;
+  text-align: center;
 `;
 
-const SectionTitle = styled.h3`
-  border-bottom: 2px solid #ffcc00;
-  padding-bottom: 10px;
+const AdText = styled.h3`
   margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.7);
 `;
 
-const PlayerOfTheWeek: React.FC = () => {
+const AD1: React.FC = () => {
   return (
-    <SidebarContainer>
-      <SectionTitle>ANUNCIO 1</SectionTitle>
-    </SidebarContainer>
+    <AdContainer>
+      <AdText>ANUNCIO</AdText>
+    </AdContainer>
   );
 };
 
-export default PlayerOfTheWeek;
+export default AD1;
