@@ -6,6 +6,11 @@ import LeagueTops from '../components/common/Cards/TOPS/LeaguesTop';
 import PlanPremium from '../components/common/Cards/ADS/PlanPremim';
 import PartidosDelDia from '../components/common/PrincipalPage/GameDay';
 import AD1 from '../components/common/Cards/ADS/Ad1';
+import BetplayPositions from '../components/common/Cards/PositionsTable/BetplayPositions';
+import Ad2 from '../components/common/Cards/ADS/Ad2';
+import TopJugadores from '../components/common/Cards/TOPS/PlayersTops';
+import Ad3 from '../components/common/Cards/ADS/Ad3';
+import AD4 from '../components/common/Cards/ADS/Ad4';
 
 const Container = styled.div`
   width: 100%;
@@ -13,6 +18,14 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 0;
 `;
+
+const PositionAdWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+`;
+
 
 const FullWidthSection = styled.div`
   display: flex;
@@ -44,14 +57,11 @@ const Home: React.FC = () => {
   return (
     <PageWithLayout>
       <Container>
-        {/* Ad section - full width */}
         <FullWidthSection>
           <AD1 />
         </FullWidthSection>
         
-        {/* Two column layout */}
         <TwoColumnContainer>
-          {/* Left column */}
           <LeftColumn>
             <div>
               <PlanPremium />
@@ -60,6 +70,20 @@ const Home: React.FC = () => {
             <div>
               <LeagueTops />
             </div>
+
+            <PositionAdWrapper>
+              <BetplayPositions />
+              <Ad2 />
+            </PositionAdWrapper>
+
+            <div>
+              <TopJugadores />
+            </div>
+
+            <div>
+              <Ad3 />
+            </div>
+
           </LeftColumn>
           
           {/* Right column */}
@@ -73,6 +97,9 @@ const Home: React.FC = () => {
             </div>
           </RightColumn>
         </TwoColumnContainer>
+        <FullWidthSection>
+          <AD4 />
+        </FullWidthSection>
       </Container>
     </PageWithLayout>
   );

@@ -8,9 +8,13 @@ const CardContainer = styled.div`
 `;
 
 const Title = styled.h2`
-  font-family: "Boldonse", system-ui;
-  font-size: 16px;
-  font-weight: 400;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
   margin: 0 0 1rem 0;
   color: white;
   text-transform: uppercase;
@@ -38,8 +42,9 @@ const ContentSection = styled.div`
 `;
 
 const BannerText = styled.div`
-  font-family: "Boldonse", system-ui;
-  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
   color: white;
   font-weight: 500;
 `;
@@ -58,7 +63,7 @@ const ArrowButton = styled.div`
 const PlanPremium: React.FC = () => {
     return (
     <CardContainer>
-      <Title>PLAN PREMIUM</Title>
+      <Title>Plan Premium</Title>
       <PremiumBanner>
         <ContentSection>
           <img 

@@ -8,9 +8,13 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: "Boldonse", system-ui;
-  font-size: 16px;
-  font-weight: 400;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
   margin: 0 0 1rem 0;
   color: white;
   text-transform: uppercase;
@@ -39,8 +43,13 @@ const LeagueLogo = styled.img`
 `;
 
 const LeagueName = styled.span`
-  font-family: "Boldonse", system-ui;
-  font-size: 12px;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
   color: #ccc;
 `;
 
@@ -69,8 +78,13 @@ const TeamLogo = styled.img`
 `;
 
 const TeamName = styled.span`
-  font-family: "Boldonse", system-ui;
-  font-size: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 14px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
   color: #fff;
   white-space: nowrap;
   overflow: hidden;
@@ -78,8 +92,13 @@ const TeamName = styled.span`
 `;
 
 const MatchTime = styled.div`
-  font-family: "Boldonse", system-ui;
-  font-size: 9px;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 14px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
   color: #fff;
   text-align: center;
 `;
@@ -91,8 +110,13 @@ const OddsContainer = styled.div`
 `;
 
 const OddButton = styled.button<{ isActive?: boolean }>`
-  font-family: "Boldonse", system-ui;
-  font-size: 8px;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 12px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
   background-color: ${props => props.isActive ? '#6a1b9a' : '#2d3035'};
   color: #fff;
   border: none;
@@ -183,12 +207,179 @@ const defaultData: PartidosDelDiaProps = {
           odds: { home: "1.24", draw: "2.5", away: "4.45" }
         }
       ]
-    }
+    },
+    {
+      name: "Serie A",
+      logo: "/logos/serie-a.png",
+      matches: [
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        }
+      ]
+    },
+    {
+      name: "Liga Betplay Dimayor",
+      logo: "/logos/liga-betplay.png",
+      matches: [
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        }
+      ]
+    },
+    {
+      name: "Serie A",
+      logo: "/logos/serie-a.png",
+      matches: [
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        }
+      ]
+    },
+    {
+      name: "Serie A",
+      logo: "/logos/serie-a.png",
+      matches: [
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        }
+      ]
+    },
+    {
+      name: "Liga Betplay Dimayor",
+      logo: "/logos/liga-betplay.png",
+      matches: [
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        }
+      ]
+    },
+    {
+      name: "Serie A",
+      logo: "/logos/serie-a.png",
+      matches: [
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        }
+      ]
+    },
+    {
+      name: "Liga Betplay Dimayor",
+      logo: "/logos/liga-betplay.png",
+      matches: [
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        },
+        {
+          homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
+          awayTeam: { name: "Bucaramanga", logo: "/logos/bucaramanga.png" },
+          time: "18:05",
+          odds: { home: "1.24", draw: "2.5", away: "4.45" }
+        }
+      ]
+    },
   ]
 };
 
 const PartidosDelDia: React.FC<Partial<PartidosDelDiaProps>> = (props) => {
-  // Merge provided props with default data
   const { date, leagues } = { ...defaultData, ...props };
   
   return (
@@ -229,11 +420,6 @@ const PartidosDelDia: React.FC<Partial<PartidosDelDiaProps>> = (props) => {
       ))}
     </Container>
   );
-};
-
-// Usage example
-const App = () => {
-  return <PartidosDelDia />; // Now works without props
 };
 
 export default PartidosDelDia;

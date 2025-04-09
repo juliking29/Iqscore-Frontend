@@ -35,7 +35,7 @@ const SidebarButton = styled.div<ChatContainerProps>`
   top: 80%;
   width: 60px;
   height: 70px;
-  background-color: #28a745;
+  background-color: #6a1b9a;
   color: white;
   display: flex;
   flex-direction: column;
@@ -51,7 +51,7 @@ const SidebarButton = styled.div<ChatContainerProps>`
   z-index: 999;
 
   &:hover {
-    background-color:rgb(30, 125, 52);
+    background-color:rgb(142, 0, 144);
   }
 `;
 

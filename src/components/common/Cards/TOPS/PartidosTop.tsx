@@ -21,9 +21,13 @@ const CardContainer = styled.div`
 `;
 
 const Title = styled.h2`
-  font-family: "Boldonse", system-ui;
-  font-size: 16px;
-  font-weight: 400;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
   margin: 0 0 1rem 0;
   color: white;
   text-transform: uppercase;
@@ -52,8 +56,13 @@ const TeamLogo = styled.img`
 `;
 
 const TeamName = styled.h3`
-  font-family: "Boldonse", system-ui;
-  font-size: 15px;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 14px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
   margin: 0;
   text-transform: uppercase;
 `;
@@ -66,17 +75,27 @@ const MiddleSection = styled.div`
 `;
 
 const MatchDate = styled.div`
-  font-family: "Boldonse", system-ui;
-  color: #aaaaaa;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;  color: #aaaaaa;
   font-size: 1.25rem;
 `;
 
 const ScoreContainer = styled.div`
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 2rem;
-  font-weight: 700;
 `;
 
 const Score = styled.span`
@@ -96,8 +115,13 @@ const OddsContainer = styled.div`
 `;
 
 const OddBox = styled.div`
-  font-family: "Boldonse", system-ui;
-  font-size: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 16px;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
   background-color: #8400FF;
   color: white;
   padding: 0.4rem 0.8rem;

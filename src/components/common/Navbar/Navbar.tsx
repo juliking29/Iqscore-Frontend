@@ -3,9 +3,9 @@ import { FaUser, FaCog, FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 
 const NavbarContainer = styled.nav`
-  font-family: "Boldonse", system-ui;
-  font-size: 12px;
-  font-weight: 400;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 600;
+  font-style: normal;
   background-color: #111517;
   color: white;
   padding: 1rem 9rem;
