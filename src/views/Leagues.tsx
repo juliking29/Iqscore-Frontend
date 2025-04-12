@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PageWithLayout from '../components/PageWithLayout';
 import PartidosTop from '../components/common/Cards/TOPS/PartidosTop';
-import LeagueTops from '../components/common/Cards/TOPS/LeaguesTop';
+import AllLeague from '../components/common/All/AllLeagues';
 import PartidosDelDia from '../components/common/PrincipalPage/GameDay';
 import AD1 from '../components/common/Cards/ADS/Ad1';
 import AD4 from '../components/common/Cards/ADS/Ad4';
@@ -53,7 +53,7 @@ const Leagues: React.FC = () => {
               <LeftColumn>
                 
                 <div>
-                  <LeagueTops />
+                  <AllLeague />
                 </div>
 
                 <div>

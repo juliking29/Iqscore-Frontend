@@ -1,11 +1,9 @@
+import React from 'react';
 import PageWithLayout from '../components/PageWithLayout';
 import styled from 'styled-components';
-import React from 'react';
 import AD1 from '../components/common/Cards/ADS/Ad1';
-import InfoTeam from '../components/common/Team/InfoTeam';
-import PlayerTeam from '../components/common/Team/PlayersTeam';
-import TablePositions from '../components/common/Team/TablePositions';
-import TeamGames from '../components/common/Team/TeamGames';
+import PlayerProfile from '../components/common/Player/ProfilePlayer';
+import PlayerTrajectory from '../components/common/Player/TeamsPlayer';
 
 const Container = styled.div`
   width: 100%;
@@ -22,7 +20,7 @@ const FullWidthSection = styled.div`
 
 const TwoColumnContainer = styled.div`
   display: grid;
-  grid-template-columns: 35% 63%;
+  grid-template-columns: 50% 50%;
   width: 100%;
   gap: 2rem;
   margin: 30px 0;
@@ -40,7 +38,7 @@ const RightColumn = styled.div`
   gap: 30px;
 `;
 
-const Team: React.FC = () => {
+const Player: React.FC = () => {
     return (
         <PageWithLayout>
             <Container>
@@ -51,23 +49,15 @@ const Team: React.FC = () => {
                 <TwoColumnContainer>
                     <LeftColumn>
                         <div>
-                            <InfoTeam />
-                        </div>
-
-                        <div>
-                            <PlayerTeam />
-                        </div>
-
+                            <PlayerProfile />
+                        </div>  
                     </LeftColumn>
 
+
                     <RightColumn>
-                        <div>
-                            <TablePositions />
-                        </div>
-                        
-                        <div>
-                            <TeamGames />
-                        </div>  
+                      <div>
+                        <PlayerTrajectory />
+                      </div>
                     </RightColumn>
                 </TwoColumnContainer>
             </Container>
@@ -75,4 +65,4 @@ const Team: React.FC = () => {
     )
 }
 
-export default Team;
+export default Player;

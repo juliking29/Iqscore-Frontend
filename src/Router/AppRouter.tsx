@@ -4,6 +4,8 @@ import Team from '../views/Team'
 import League from '../views/League'
 import Leagues from '../views/Leagues'
 import Teams from '../views/Teams'
+import Game from '../views/Game'
+import Player from '../views/Player'
 
 export const router = createBrowserRouter([
     {
@@ -25,5 +27,13 @@ export const router = createBrowserRouter([
     {
         path: '/teams',
         element: <Teams />
+    },
+    {
+        path: '/game',
+        element: <Game />
+    },
+    {
+        path: '/player',
+        element: <Player />
     }
 ])

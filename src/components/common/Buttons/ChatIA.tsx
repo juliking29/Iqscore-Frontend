@@ -7,7 +7,7 @@ interface ChatContainerProps {
 
 const ChatWrapper = styled.div`
   position: relative;
-  z-index: 1000;
+  z-index: 2;
 `;
 
 const ChatContainer = styled.div<ChatContainerProps>`
@@ -35,7 +35,7 @@ const SidebarButton = styled.div<ChatContainerProps>`
   top: 80%;
   width: 60px;
   height: 70px;
-  background-color: #6a1b9a;
+  background-color: #8400FF;
   color: white;
   display: flex;
   flex-direction: column;
@@ -51,7 +51,7 @@ const SidebarButton = styled.div<ChatContainerProps>`
   z-index: 999;
 
   &:hover {
-    background-color:rgb(142, 0, 144);
+    background-color:rgb(82, 0, 159);
   }
 `;
 
@@ -106,7 +106,7 @@ const ChatIA: React.FC = () => {
   return (
     <ChatWrapper>
       <SidebarButton onClick={toggleChat} isOpen={isOpen}>
-        C<br />
+        <img src="./images/chatbot.png" alt="Chat Icon" style={{ width: "40px", height: "40px" }} />
       </SidebarButton>
 
       <ChatContainer isOpen={isOpen}>

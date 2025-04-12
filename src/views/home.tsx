@@ -86,7 +86,6 @@ const Home: React.FC = () => {
 
           </LeftColumn>
           
-          {/* Right column */}
           <RightColumn>
             <div>
               <PartidosTop />

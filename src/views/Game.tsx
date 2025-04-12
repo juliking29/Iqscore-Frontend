@@ -1,11 +1,11 @@
-import PageWithLayout from '../components/PageWithLayout';
-import styled from 'styled-components';
 import React from 'react';
+import styled from 'styled-components';
+import PageWithLayout from '../components/PageWithLayout';
 import AD1 from '../components/common/Cards/ADS/Ad1';
-import InfoTeam from '../components/common/Team/InfoTeam';
-import PlayerTeam from '../components/common/Team/PlayersTeam';
-import TablePositions from '../components/common/Team/TablePositions';
-import TeamGames from '../components/common/Team/TeamGames';
+import MatchInfo from '../components/common/Game/InfoGame';
+import BettingOdds from '../components/common/Game/Odds';
+import StartingLineup from '../components/common/Game/Headlines';
+import Ad3 from '../components/common/Cards/ADS/Ad3';
 
 const Container = styled.div`
   width: 100%;
@@ -22,9 +22,9 @@ const FullWidthSection = styled.div`
 
 const TwoColumnContainer = styled.div`
   display: grid;
-  grid-template-columns: 35% 63%;
+  grid-template-columns: 60% 38%;
   width: 100%;
-  gap: 2rem;
+  gap: 1rem;
   margin: 30px 0;
 `;
 
@@ -40,7 +40,7 @@ const RightColumn = styled.div`
   gap: 30px;
 `;
 
-const Team: React.FC = () => {
+const Game: React.FC = () => {
     return (
         <PageWithLayout>
             <Container>
@@ -51,28 +51,29 @@ const Team: React.FC = () => {
                 <TwoColumnContainer>
                     <LeftColumn>
                         <div>
-                            <InfoTeam />
+                            <MatchInfo />
                         </div>
-
                         <div>
-                            <PlayerTeam />
+                            <StartingLineup />
                         </div>
 
                     </LeftColumn>
 
                     <RightColumn>
                         <div>
-                            <TablePositions />
+                            <BettingOdds />
                         </div>
-                        
                         <div>
-                            <TeamGames />
-                        </div>  
+                            <Ad3 />
+                        </div>
                     </RightColumn>
                 </TwoColumnContainer>
+                <FullWidthSection>
+                    <AD1 />
+                </FullWidthSection>
             </Container>
         </PageWithLayout>
     )
 }
 
-export default Team;
+export default Game;

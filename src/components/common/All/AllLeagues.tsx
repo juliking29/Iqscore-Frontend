@@ -86,7 +86,7 @@ const FavoriteButton = styled.button`
   }
 `;
 
-const LeagueTops = () => {
+const AllLeague = () => {
   const [favorites, setFavorites] = React.useState({
     "Liga Betplay Dimayor 1": false,
     "Serie A 1": false,
@@ -106,14 +106,15 @@ const LeagueTops = () => {
   const competitions = [
     { id: "Liga Betplay Dimayor 1", name: "Liga Betplay Dimayor", logo: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjm5vx7uEL8qvmLdtsszzL2v7ixiq0zzV2aUrowvo7m-YzGrVz1g90p1XfoMoy_ecYE43cjxOtcfDzcD62TloUNMpyAAXjzKVUBa0XcP9HM9X9RGMh8xBUxtN8zYZfGMgNml6An2EI4g6U/s512/Liga+BetPlay.png" },
     { id: "Serie A 1", name: "Serie A", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Serie_A_logo_2022.svg/1200px-Serie_A_logo_2022.svg.png" },
-    { id: "Premier League 1", name: "Premier League", logo: "https://www.ceroacero.es//img/logos/edicoes/97911_imgbank_.png" },
-    { id: "Liga Betplay Dimayor 2", name: "Liga Betplay Dimayor", logo: "https://a.espncdn.com/combiner/i?img=%2Fi%2Fleaguelogos%2Fsoccer%2F500%2F1543.png" },
-    { id: "Serie A 2", name: "Serie A", logo: "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fleaguelogos%2Fsoccer%2F500%2F12.png" },
+    { id: "Premier League 1", name: "Premier League", logo: "/api/placeholder/36/36" },
+    { id: "Liga Betplay Dimayor 2", name: "Liga Betplay Dimayor", logo: "/api/placeholder/36/36" },
+    { id: "Serie A 2", name: "Serie A", logo: "/api/placeholder/36/36" },
+    { id: "Premier League 2", name: "Premier League", logo: "/api/placeholder/36/36" },
   ];
 
   return (
     <CardContainerP>
-      <Title>MEJORES LIGAS</Title>
+      <Title>Ligas</Title>
     <CardContainer>
       <CompetitionList>
         {competitions.map((competition) => (
@@ -133,4 +134,4 @@ const LeagueTops = () => {
   );
 };
 
-export default LeagueTops;
+export default AllLeague;

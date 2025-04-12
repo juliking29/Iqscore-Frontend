@@ -162,7 +162,7 @@ const defaultData: PartidosDelDiaProps = {
   leagues: [
     {
       name: "Liga Betplay Dimayor",
-      logo: "/logos/liga-betplay.png",
+      logo: "https://a.espncdn.com/combiner/i?img=%2Fi%2Fleaguelogos%2Fsoccer%2F500%2F1543.png",
       matches: [
         {
           homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },
@@ -186,7 +186,7 @@ const defaultData: PartidosDelDiaProps = {
     },
     {
       name: "Serie A",
-      logo: "/logos/serie-a.png",
+      logo: "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fleaguelogos%2Fsoccer%2F500%2F12.png",
       matches: [
         {
           homeTeam: { name: "America de Cali", logo: "/logos/america-cali.png" },

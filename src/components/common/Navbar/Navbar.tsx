@@ -2,19 +2,33 @@ import React, { useState } from "react";
 import { FaUser, FaCog, FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 
+const NavWrapper = styled.div`
+  background-color: #111517;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
 const NavbarContainer = styled.nav`
   font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 600;
   font-style: normal;
   background-color: #111517;
   color: white;
-  padding: 1rem 9rem;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 50px;
   position: relative;
   z-index: 100;
+  width: 1240px;
+  max-width: 1240px;
+`;
+
+const LogoContainer = styled.div`
+  text-lg: 18px;
+  font-weight: bold;
 `;
 
 const SearchContainer = styled.div`
@@ -83,6 +97,10 @@ const IconButton = styled.button`
   background-color: #4a5568;
   border: none;
   cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover {
     background-color: #1D1B20;
   }
@@ -92,33 +110,35 @@ const Navbar: React.FC = () => {
   const [search, setSearch] = useState("");
 
   return (
-    <NavbarContainer>
-      <div className="text-lg font-bold">logo <span style={{ color: "#a0aec0" }}>(EN PROCESO)</span></div>
-      
-      <SearchContainer>
-        <IconWrapper>
-          <FaSearch />
-        </IconWrapper>
-        <SearchInput
-          type="text"
-          placeholder="Busca en IQSCORE"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </SearchContainer>
-      
-      <LinksContainer>
-        <Link href="#">LIGAS</Link>
-        <Link href="#">EQUIPOS</Link>
-        <Link href="#">FAVORITOS</Link>
-        <Button>
-          <FaUser /> <span>INICIAR</span>
-        </Button>
-        <IconButton>
-          <FaCog />
-        </IconButton>
-      </LinksContainer>
-    </NavbarContainer>
+    <NavWrapper>
+      <NavbarContainer>
+        <LogoContainer>logo <span style={{ color: "#a0aec0" }}>(EN PROCESO)</span></LogoContainer>
+        
+        <SearchContainer>
+          <IconWrapper>
+            <FaSearch />
+          </IconWrapper>
+          <SearchInput
+            type="text"
+            placeholder="Busca en IQSCORE"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </SearchContainer>
+        
+        <LinksContainer>
+          <Link href="Leagues">LIGAS</Link>
+          <Link href="Teams">EQUIPOS</Link>
+          <Link href="#">FAVORITOS</Link>
+          <Button>
+            <FaUser /> <span>INICIAR</span>
+          </Button>
+          <IconButton>
+            <FaCog />
+          </IconButton>
+        </LinksContainer>
+      </NavbarContainer>
+    </NavWrapper>
   );
 };
 

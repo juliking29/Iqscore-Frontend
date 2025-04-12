@@ -2,6 +2,7 @@ import Navbar from '../components/common/Navbar/Navbar.tsx';
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import Footer from '../components/common/footer/Footer.tsx';
+import ChatIA from '../components/common/Buttons/ChatIA.tsx';
 
 const GlobalStyle = createGlobalStyle`
   body, html {
@@ -38,6 +39,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <Navbar />
                 <Content>{children}</Content>
                 <Footer />
+                <ChatIA />
             </MainContainer>
         </>
     );
