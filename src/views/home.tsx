@@ -17,6 +17,7 @@ const Container = styled.div`
   max-width: 1240px;
   margin: 0 auto;
   padding: 0;
+  margin-top: 100px; /* Esto da espacio para el navbar fijo */
 `;
 
 const PositionAdWrapper = styled.div`
@@ -25,7 +26,6 @@ const PositionAdWrapper = styled.div`
   align-items: flex-start;
   gap: 1rem;
 `;
-
 
 const FullWidthSection = styled.div`
   display: flex;
@@ -60,21 +60,23 @@ const Home: React.FC = () => {
         <FullWidthSection>
           <AD1 />
         </FullWidthSection>
-        
+
         <TwoColumnContainer>
           <LeftColumn>
             <div>
               <PlanPremium />
             </div>
-            
+
             <div>
               <LeagueTops />
             </div>
 
-            <PositionAdWrapper>
-              <BetplayPositions />
-              <Ad2 />
-            </PositionAdWrapper>
+            <div>
+              <PositionAdWrapper>
+                <BetplayPositions />
+                <Ad2 />
+              </PositionAdWrapper>
+            </div>
 
             <div>
               <TopJugadores />
@@ -85,12 +87,12 @@ const Home: React.FC = () => {
             </div>
 
           </LeftColumn>
-          
+
           <RightColumn>
             <div>
               <PartidosTop />
             </div>
-            
+
             <div>
               <PartidosDelDia />
             </div>

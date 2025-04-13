@@ -1,102 +1,8 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 
-interface ChatContainerProps {
-  isOpen: boolean;
-}
+interface ChatIAProps {}
 
-const ChatWrapper = styled.div`
-  position: relative;
-  z-index: 2;
-`;
-
-const ChatContainer = styled.div<ChatContainerProps>`
-  position: fixed;
-  right: 0;
-  top: 20%;
-  width: 450px;
-  height: 550px;
-  background-color: #181818;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transform: translateX(${props => (props.isOpen ? "0" : "100%")});
-  transition: transform 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  border-radius: 0 0 0 10px;
-  overflow: hidden;
-`;
-
-const SidebarButton = styled.div<ChatContainerProps>`
-    font-family: "Funnel Display", sans-serif;
-    font-weight: 700;
-  font-style: normal;
-  position: fixed;
-  right: ${props => (props.isOpen ? "450px" : "0")};
-  top: 80%;
-  width: 60px;
-  height: 70px;
-  background-color: #8400FF;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  letter-spacing: 8px;
-  cursor: pointer;
-  line-height: 1.5;
-  border-radius: 10px 0 0 10px; 
-  box-shadow: -3px 0 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  z-index: 999;
-
-  &:hover {
-    background-color:rgb(82, 0, 159);
-  }
-`;
-
-const WelcomeMessage = styled.div`
-  font-family: "Funnel Display", sans-serif;
-  background-color: #1a2c38;
-  padding: 15px;
-  margin: 20px 15px;
-  border-radius: 8px;
-  font-size: 14px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  line-height: 1.4;
-`;
-
-const InputContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 15px;
-  border-radius: 0 0 0 10px;
-`;
-
-const ChatInput = styled.input`
-  width: 100%;
-  padding: 10px 8px;
-  border: none;
-  border-radius: 10px;
-  background-color: #222;
-  color: white;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-
-  &::placeholder {
-    color: #aaa;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.1);
-  }
-`;
-
-const ChatIA: React.FC = () => {
+const ChatIA: React.FC<ChatIAProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleChat = () => {
@@ -104,21 +10,42 @@ const ChatIA: React.FC = () => {
   };
 
   return (
-    <ChatWrapper>
-      <SidebarButton onClick={toggleChat} isOpen={isOpen}>
-        <img src="./images/chatbot.png" alt="Chat Icon" style={{ width: "40px", height: "40px" }} />
-      </SidebarButton>
+    <div className="relative z-10">
+      {/* Sidebar Button */}
+      <div
+        className={`fixed top-[80%] w-[60px] h-[70px] bg-[#8400FF] text-white flex flex-col items-center justify-center text-[18px] tracking-[8px] cursor-pointer rounded-l-[10px] shadow-[ -3px_0_8px_rgba(0,0,0,0.2)] transition-all duration-300 z-[999] font-bold font-sans ${
+          isOpen ? 'right-[450px]' : 'right-0'
+        } hover:bg-[rgb(82,0,159)]`}
+        onClick={toggleChat}
+      >
+        <img
+          src="./images/chatbot.png"
+          alt="Chat Icon"
+          className="w-[40px] h-[40px]"
+        />
+      </div>
 
-      <ChatContainer isOpen={isOpen}>
-        <WelcomeMessage>
+      {/* Chat Container */}
+      <div
+        className={`fixed top-[20%] w-[450px] h-[550px] bg-[#181818] shadow-lg transition-transform duration-300 ease-in-out flex flex-col rounded-bl-[10px] overflow-hidden z-[2] ${
+          isOpen ? 'translate-x-0 right-0' : 'translate-x-full right-0'
+        }`}
+      >
+        {/* Welcome Message */}
+        <div className="bg-[#1a2c38] p-[15px] m-[20px_15px] rounded-[8px] text-[14px] shadow-[0_2px_5px_rgba(0,0,0,0.1)] border border-[rgba(0,0,0,0.05)] leading-[1.4] font-sans font-bold">
           Bienvenido al CHAT con mayor precisión para apuestas deportivas, ¿qué equipo o liga te gustaría?
-        </WelcomeMessage>
+        </div>
 
-        <InputContainer>
-          <ChatInput placeholder="¿Qué quieres hacer?" />
-        </InputContainer>
-      </ChatContainer>
-    </ChatWrapper>
+        {/* Input */}
+        <div className="absolute bottom-0 w-full p-[15px] rounded-br-[10px]">
+          <input
+            type="text"
+            placeholder="¿Qué quieres hacer?"
+            className="w-full p-[10px_8px] rounded-[10px] bg-[#222] text-white text-[14px] placeholder-[#aaa] focus:outline-none shadow-inner shadow-[inset_0_1px_3px_rgba(0,0,0,0.2)] focus:shadow-[inset_0_1px_3px_rgba(0,0,0,0.2),_0_0_0_2px_rgba(255,255,255,0.1)] transition-all duration-300"
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 // src/components/PageWithLayout.tsx
 import React, { ReactNode } from 'react';
-import { ThemeProvider } from '../contexts/ThemeContext';
 import MainLayout from '../layouts/MainLayout';
 
 interface PageWithLayoutProps {
@@ -9,11 +8,9 @@ interface PageWithLayoutProps {
 
 const PageWithLayout: React.FC<PageWithLayoutProps> = ({ children }) => {
   return (
-    <ThemeProvider>
       <MainLayout>
         {children}
       </MainLayout>
-    </ThemeProvider>
   );
 };
 

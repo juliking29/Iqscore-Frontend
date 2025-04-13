@@ -1,53 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-
-const CardContainer = styled.div`
-  max-width: 1250px;
-  margin: 0 auto;
-`;
-
-const TrajectoryCardContainer = styled.div`
-  background-color: #111517;
-  border-radius: 12px;
-  overflow: hidden;
-  color: white;
-  font-family: "Nunito Sans", sans-serif;
-  box-shadow: 0 10px 20px #111517, 0 0 0px #BEBEBE;
-  padding: 1.5rem;
-`;
-
-const CardTitle = styled.h3`
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0 0 1.25rem 0;
-  color: white;
-  display: flex;
-  align-items: center;
-`;
-
-const ArrowIcon = styled.span`
-  margin-left: 0.5rem;
-`;
-
-const ClubsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-`;
-
-const ClubLogo = styled.div`
-  width: 64px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ClubImage = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-`;
 
 const PlayerTrajectory: React.FC = () => {
   const clubs = [
@@ -57,22 +8,22 @@ const PlayerTrajectory: React.FC = () => {
   ];
 
   return (
-    <CardContainer>
-      <TrajectoryCardContainer>
-        <CardTitle>
+    <div className="max-w-[1250px] mx-auto">
+      <div className="bg-white dark:bg-[#111517] rounded-lg overflow-hidden text-black dark:text-white font-nunito p-6 shadow-lg border border-[#ccc] dark:border-[#333]">
+        <h3 className="text-[18px] font-semibold mb-5 flex items-center">
           Trayectoria
-          <ArrowIcon>→</ArrowIcon>
-        </CardTitle>
-        
-        <ClubsContainer>
+          <span className="ml-2">→</span>
+        </h3>
+
+        <div className="flex items-center gap-x-6">
           {clubs.map((club) => (
-            <ClubLogo key={club.id}>
-              <ClubImage src={club.logo} alt={club.name} />
-            </ClubLogo>
+            <div key={club.id} className="w-[64px] h-[64px] flex items-center justify-center">
+              <img src={club.logo} alt={club.name} className="max-w-full max-h-full object-contain" />
+            </div>
           ))}
-        </ClubsContainer>
-      </TrajectoryCardContainer>
-    </CardContainer>
+        </div>
+      </div>
+    </div>
   );
 };
 

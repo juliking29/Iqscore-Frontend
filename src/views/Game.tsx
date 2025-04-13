@@ -12,6 +12,8 @@ const Container = styled.div`
   max-width: 1240px;
   margin: 0 auto;
   padding: 0;
+  margin-top: 100px;
+
 `;
 
 const FullWidthSection = styled.div`

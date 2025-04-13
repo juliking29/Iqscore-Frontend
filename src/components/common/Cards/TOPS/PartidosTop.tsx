@@ -1,207 +1,63 @@
 import React from "react";
-import styled from "styled-components";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
-
-const CardContainerP = styled.div`
-  max-width: 1240px;
-  margin: 0 auto;
-  color: #fff;
-`;
-
-const CardContainer = styled.div`
-  box-shadow: 0 10px 20px #111517, 0 0 0px #BEBEBE;
-  background-color: #1c1f22;
-  border-radius: 12px;
-  padding: 2rem;
-  color: white;
-  max-width: 750px;
-  margin: 0 auto;
-  position: relative;
-`;
-
-const Title = styled.h2`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 18px;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
-  margin: 0 0 1rem 0;
-  color: white;
-  text-transform: uppercase;
-`;
-
-const MatchContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-`;
-
-const TeamSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
-  width: 250px;
-`;
-
-const TeamLogo = styled.img`
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-`;
-
-const TeamName = styled.h3`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 14px;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
-  margin: 0;
-  text-transform: uppercase;
-`;
-
-const MiddleSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-`;
-
-const MatchDate = styled.div`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 18px;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;  color: #aaaaaa;
-  font-size: 1.25rem;
-`;
-
-const ScoreContainer = styled.div`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 18px;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const Score = styled.span`
-  font-size: 2.5rem;
-  font-weight: 800;
-`;
-
-const DrawX = styled.span`
-  font-size: 2rem;
-  color: #aaaaaa;
-`;
-
-const OddsContainer = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-`;
-
-const OddBox = styled.div`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 16px;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
-  background-color: #8400FF;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 1px;
-  font-weight: 400;
-  width: 60px;
-  text-align: center;
-`;
-
-const NavigationButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-  
-  &:hover {
-    opacity: 1;
-  }
-  
-  &:focus {
-    outline: none;
-  }
-  
-  &.left {
-    left: 20px;
-  }
-  
-  &.right {
-    right: 20px;
-  }
-`;
 
 const PartidosTop: React.FC = () => {
   return (
-    <>
-    <CardContainerP >
-      <Title>PARTIDOS TOP DE LA SEMANA</Title>
-      <CardContainer>
-        <NavigationButton className="left">
+    <div className="max-w-[1240px] mx-auto text-black dark:text-white font-nunito">
+      <h2 className="text-[18px] font-bold uppercase mb-4">
+        PARTIDOS TOP DE LA SEMANA
+      </h2>
+
+      <div className="relative bg-white p-6 rounded-lg shadow-lg border border-[#ccc] dark:bg-[#1B1D20] dark:border-[#333]">
+        <button className="absolute left-5 top-1/2 transform -translate-y-1/2 text-black dark:text-white text-xl opacity-70 hover:opacity-100">
           <FaChevronLeft />
-        </NavigationButton>
-        
-        <MatchContent>
-          <TeamSection>
-            <TeamLogo src="https://static0.givemesportimages.com/wordpress/wp-content/uploads/2024/08/real-madrid-logo-resized.png" alt="Real Madrid Logo" />
-            <TeamName>REAL MADRID</TeamName>
-          </TeamSection>
-          
-          <MiddleSection>
-            <MatchDate>31/03/2025</MatchDate>
-            <ScoreContainer>
-              <Score>1</Score>
-              <DrawX>x</DrawX>
-              <Score>2</Score>
-            </ScoreContainer>
-            <OddsContainer>
-              <OddBox>2.15</OddBox>
-              <OddBox>4.4</OddBox>
-              <OddBox>3.52</OddBox>
-            </OddsContainer>
-          </MiddleSection>
-          
-          <TeamSection>
-            <TeamLogo src="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png" alt="Manchester City Logo" />
-            <TeamName>MANCHESTER CITY</TeamName>
-          </TeamSection>
-        </MatchContent>
-        
-        <NavigationButton className="right">
+        </button>
+
+        <div className="flex justify-between items-center px-8 py-4">
+          <div className="flex flex-col items-center gap-4 text-center w-[250px]">
+            <img
+              src="https://static0.givemesportimages.com/wordpress/wp-content/uploads/2024/08/real-madrid-logo-resized.png"
+              alt="Real Madrid Logo"
+              className="w-[120px] h-[120px] object-contain"
+            />
+            <h3 className="text-[14px] uppercase">REAL MADRID</h3>
+          </div>
+
+          <div className="flex flex-col items-center gap-6">
+            <div className="text-[#555] dark:text-[#aaaaaa] text-[20px]">31/03/2025</div>
+            <div className="flex items-center gap-4 text-[18px]">
+              <span className="text-[2.5rem] font-extrabold">1</span>
+              <span className="text-[2rem] text-[#555] dark:text-[#aaaaaa]">x</span>
+              <span className="text-[2.5rem] font-extrabold">2</span>
+            </div>
+            <div className="flex gap-2 mt-2">
+              <div className="bg-[#8400FF] text-white px-3 py-1 text-center rounded-sm text-[16px] w-[60px]">
+                2.15
+              </div>
+              <div className="bg-[#8400FF] text-white px-3 py-1 text-center rounded-sm text-[16px] w-[60px]">
+                4.4
+              </div>
+              <div className="bg-[#8400FF] text-white px-3 py-1 text-center rounded-sm text-[16px] w-[60px]">
+                3.52
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center gap-4 text-center w-[250px]">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png"
+              alt="Manchester City Logo"
+              className="w-[120px] h-[120px] object-contain"
+            />
+            <h3 className="text-[14px] uppercase">MANCHESTER CITY</h3>
+          </div>
+        </div>
+
+        <button className="absolute right-5 top-1/2 transform -translate-y-1/2 text-black dark:text-white text-xl opacity-70 hover:opacity-100">
           <FaChevronRight />
-        </NavigationButton>
-      </CardContainer>
-      </CardContainerP>
-    </>
+        </button>
+      </div>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Home from '../views/home'
+import Home from '../views/Home'
 import Team from '../views/Team'
 import League from '../views/League'
 import Leagues from '../views/Leagues'

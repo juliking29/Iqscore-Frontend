@@ -1,83 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-
-const CardContainer = styled.div`
-  max-width: 1240px;
-  margin: 0 auto;
-`;
-
-const TopPlayersContainer = styled.div`
-  max-width: 1250px;
-  background-color: #111517;
-  border-radius: 12px;
-  overflow: hidden;
-  color: white;
-  font-family: "Nunito Sans", sans-serif;
-  box-shadow: 0 10px 20px #111517, 0 0 0px #BEBEBE;
-`;
-
-const TopPlayersTitle = styled.h2`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 18px;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
-  margin: 0 0 1rem 0;
-  color: white;
-  text-transform: uppercase;
-`;
-
-const PlayersList = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem 0;
-`;
-
-const PlayerRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1.5rem;
-`;
-
-const PlayerInfo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const PlayerAvatar = styled.div`
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: #2a2a2a;
-`;
-
-const PlayerImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-const PlayerName = styled.h3`
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0;
-  color: white;
-`;
-
-const PlayerRating = styled.div`
-  background-color: #8400FF;
-  color: white;
-  font-weight: 700;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  min-width: 40px;
-  text-align: center;
-`;
 
 const TopJugadores: React.FC = () => {
   const playersData = [
@@ -120,24 +41,33 @@ const TopJugadores: React.FC = () => {
   ];
 
   return (
-    <CardContainer>
-        <TopPlayersTitle>TOP JUGADORES</TopPlayersTitle>
-    <TopPlayersContainer>
-      <PlayersList>
-        {playersData.map((player) => (
-          <PlayerRow key={player.id}>
-            <PlayerInfo>
-              <PlayerAvatar>
-                <PlayerImage src={player.image} alt={player.name} />
-              </PlayerAvatar>
-              <PlayerName>{player.name}</PlayerName>
-            </PlayerInfo>
-            <PlayerRating>{player.rating}</PlayerRating>
-          </PlayerRow>
-        ))}
-      </PlayersList>
-    </TopPlayersContainer>
-    </CardContainer>
+    <div className="max-w-[1240px] mx-auto text-black dark:text-white font-nunito">
+      <h2 className="text-[18px] font-bold uppercase mb-4">TOP JUGADORES</h2>
+      <div className="relative bg-white p-6 rounded-lg shadow-lg border border-[#ccc] dark:bg-[#1B1D20] dark:border-[#333]">
+        <div className="space-y-4">
+          {playersData.map((player) => (
+            <div
+              key={player.id}
+              className="flex items-center justify-between py-3 px-6 bg-gray-100 dark:bg-[#1A1C20] rounded-lg hover:bg-gray-200 dark:hover:bg-[#2A2D31] transition"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-300 dark:bg-[#2a2a2a]">
+                  <img
+                    src={player.image}
+                    alt={player.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-lg font-medium">{player.name}</h3>
+              </div>
+              <div className="bg-purple-600 text-white font-semibold px-3 py-1 rounded-md min-w-[40px] text-center">
+                {player.rating}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

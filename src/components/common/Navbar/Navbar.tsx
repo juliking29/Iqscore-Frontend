@@ -1,144 +1,97 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaUser, FaCog, FaSearch } from "react-icons/fa";
-import styled from "styled-components";
-
-const NavWrapper = styled.div`
-  background-color: #111517;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
-const NavbarContainer = styled.nav`
-  font-family: "Be Vietnam Pro", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  background-color: #111517;
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
-  position: relative;
-  z-index: 100;
-  width: 1240px;
-  max-width: 1240px;
-`;
-
-const LogoContainer = styled.div`
-  text-lg: 18px;
-  font-weight: bold;
-`;
-
-const SearchContainer = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-`;
-
-const SearchInput = styled.input`
-  background-color: #20262A;
-  color: white;
-  padding: 0.5rem 2rem;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  text-align: center;
-  &::placeholder {
-    color: #EAEAEA;
-  }
-`;
-
-const IconWrapper = styled.div`
-  position: absolute;
-  left: 30px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #EAEAEA;
-`;
-
-const LinksContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-`;
-
-const Link = styled.a`
-  color: white;
-  text-decoration: none;
-  &:hover {
-    color: #8400FF;
-  }
-`;
-
-const Button = styled.button`
-  background-color: #EAEAEA;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border: none;
-  cursor: pointer;
-  color: #1D1B20;
-  font-weight: bold;
-  &:hover {
-    background-color: #d6d6d6;
-  }
-`;
-
-const IconButton = styled.button`
-  padding: 0.5rem;
-  border-radius: 50%;
-  background-color: #4a5568;
-  border: none;
-  cursor: pointer;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    background-color: #1D1B20;
-  }
-`;
 
 const Navbar: React.FC = () => {
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) return savedTheme;
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+    return "light";
+  });
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    theme === "dark" ? html?.classList.add("dark") : html?.classList.remove("dark");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleThemeChange = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
   const [search, setSearch] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <NavWrapper>
-      <NavbarContainer>
-        <LogoContainer>logo <span style={{ color: "#a0aec0" }}>(EN PROCESO)</span></LogoContainer>
+    <div className="fixed top-0 left-0 right-0 bg-[#2c3ec4] dark:bg-[#1B1D20] w-full z-50">
+      <nav className="font-sans font-semibold text-white px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between h-20 max-w-[1280px] w-full mx-auto">
         
-        <SearchContainer>
-          <IconWrapper>
-            <FaSearch />
-          </IconWrapper>
-          <SearchInput
-            type="text"
-            placeholder="Busca en IQSCORE"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </SearchContainer>
-        
-        <LinksContainer>
-          <Link href="Leagues">LIGAS</Link>
-          <Link href="Teams">EQUIPOS</Link>
-          <Link href="#">FAVORITOS</Link>
-          <Button>
-            <FaUser /> <span>INICIAR</span>
-          </Button>
-          <IconButton>
+        {/* Logo + Search */}
+        <div className="flex items-center gap-4 sm:gap-6 w-full max-w-[600px]">
+          <div className="text-lg font-bold whitespace-nowrap">logo</div>
+
+          <div className="relative flex-grow">
+            <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-[#EAEAEA]">
+              <FaSearch />
+            </div>
+            <input
+              type="text"
+              placeholder="Busca en IQSCORE"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full text-black dark:text-white bg-[#f3f4f6] dark:bg-[#20262A] py-2 pl-10 pr-4 rounded-md shadow-sm border border-gray-300 dark:border-none outline-none placeholder-gray-500 dark:placeholder-[#EAEAEA] transition focus:ring-2 focus:ring-[#2c3ec4] dark:focus:ring-[#4c51bf] text-sm sm:text-base"
+            />
+          </div>
+        </div>
+
+      {/* Right side */}
+      <div className="hidden md:flex items-center gap-4 lg:gap-6">
+      <a
+        href="Leagues"
+        className="text-white hover:bg-gray-400 dark:hover:bg-[#2a2a2a] px-2 py-1 rounded-md transition duration-200 ease-in-out hover:shadow-sm"
+      >
+        LIGAS
+      </a>
+      <a
+        href="Teams"
+        className="text-white hover:bg-gray-400 dark:hover:bg-[#2a2a2a] px-2 py-1 rounded-md transition duration-200 ease-in-out hover:shadow-sm"
+      >
+        EQUIPOS
+      </a>
+      <a
+        href="#"
+        className="text-white hover:bg-gray-400 dark:hover:bg-[#2a2a2a] px-2 py-1 rounded-md transition duration-200 ease-in-out hover:shadow-sm"
+      >
+        FAVORITOS
+      </a>
+
+        <button className="bg-[#EAEAEA] py-2 px-4 rounded-md flex items-center gap-2 text-[#1D1B20] font-bold hover:bg-[#d6d6d6] transition text-sm sm:text-base">
+          <FaUser /> <span>INICIAR</span>
+        </button>
+
+        {/* Cog and Theme Menu */}
+        <div className="relative">
+          <button
+            className="text-white hover:text-gray-300 transition text-xl"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             <FaCog />
-          </IconButton>
-        </LinksContainer>
-      </NavbarContainer>
-    </NavWrapper>
+          </button>
+          {menuOpen && (
+            <div className="absolute left-[-110px] mt-2 bg-white dark:bg-[#2b2b2b] p-4 rounded-lg shadow-lg w-48 z-20">
+              <p className="font-semibold text-gray-700 dark:text-gray-200">Opciones de Modo</p>
+              <button
+                className="mt-2 w-full py-2 px-4 bg-[#4a5568] text-white rounded-md hover:bg-[#1D1B20] transition"
+                onClick={handleThemeChange}
+              >
+                Claro/Oscuro
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+      </nav>
+    </div>
   );
 };
 

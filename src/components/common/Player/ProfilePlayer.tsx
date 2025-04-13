@@ -1,128 +1,51 @@
 import React from "react";
-import styled from "styled-components";
-
-const CardContainer = styled.div`
-  max-width: 1250px;
-  margin: 0 auto;
-`;
-
-const PlayerCardContainer = styled.div`
-  background-color: #111517;
-  border-radius: 12px;
-  overflow: hidden;
-  color: white;
-  font-family: "Nunito Sans", sans-serif;
-  box-shadow: 0 10px 20px #111517, 0 0 0px #BEBEBE;
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-`;
-
-const PlayerAvatar = styled.div`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: white;
-  margin-right: 1.5rem;
-  flex-shrink: 0;
-`;
-
-const PlayerImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-const PlayerInfoContainer = styled.div`
-  flex-grow: 1;
-`;
-
-const PlayerNameRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-`;
-
-const PlayerName = styled.h3`
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0;
-  color: white;
-`;
-
-const PlayerValue = styled.span`
-  font-size: 18px;
-  font-weight: 600;
-  color: white;
-`;
-
-const PlayerDetailsRow = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-`;
-
-const DetailLabel = styled.span`
-  font-size: 16px;
-  color: #aaa;
-  margin-right: 2rem;
-`;
-
-const FlagContainer = styled.div`
-  width: 32px;
-  height: 24px;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-right: 2rem;
-`;
-
-const FlagImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-const TeamLogoContainer = styled.div`
-  width: 32px;
-  height: 32px;
-`;
-
-const TeamLogo = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-`;
 
 const PlayerProfile: React.FC = () => {
   return (
-    <CardContainer>
-      <PlayerCardContainer>
-        <PlayerAvatar>
-          <PlayerImage src="https://assets.laliga.com/squad/2024/t186/p220160/2048x2048/p220160_t186_2024_1_002_000.jpg" alt="Kylian Mbappé" />
-        </PlayerAvatar>
-        
-        <PlayerInfoContainer>
-          <PlayerNameRow>
-            <PlayerName>Kylian Mbappé</PlayerName>
-            <PlayerValue>$ 46M</PlayerValue>
-          </PlayerNameRow>
-          
-          <PlayerDetailsRow>
-            <DetailLabel>Nacionalidad</DetailLabel>
-            <FlagContainer>
-              <FlagImage src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/330px-Flag_of_France.svg.png" alt="France Flag" />
-            </FlagContainer>
-            
-            <DetailLabel>Equipo Actual</DetailLabel>
-            <TeamLogoContainer>
-              <TeamLogo src="https://img.uefa.com/imgml/TP/teams/logos/240x240/50051.png" alt="Real Madrid Logo" />
-            </TeamLogoContainer>
-          </PlayerDetailsRow>
-        </PlayerInfoContainer>
-      </PlayerCardContainer>
-    </CardContainer>
+    <div className="max-w-[1250px] mx-auto">
+      <div className="bg-white dark:bg-[#111517] rounded-lg overflow-hidden text-black dark:text-white font-nunito p-6 shadow-lg border border-[#ccc] dark:border-[#333] flex items-center">
+        {/* Player Avatar */}
+        <div className="w-[100px] h-[100px] rounded-full overflow-hidden bg-[#f0f0f0] dark:bg-[#111517] mr-6 flex-shrink-0">
+          <img
+            src="https://assets.laliga.com/squad/2024/t186/p220160/2048x2048/p220160_t186_2024_1_002_000.jpg"
+            alt="Kylian Mbappé"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Player Info */}
+        <div className="flex-grow">
+          {/* Player Name and Value */}
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-[20px] font-semibold m-0 text-black dark:text-white">Kylian Mbappé</h3>
+            <span className="text-[18px] font-semibold text-black dark:text-white">$ 46M</span>
+          </div>
+
+          {/* Player Details */}
+          <div className="flex items-center mb-4">
+            {/* Nationality */}
+            <span className="text-[16px] text-[#555] dark:text-[#aaa] mr-8">Nacionalidad</span>
+            <div className="w-[32px] h-[24px] rounded-[4px] overflow-hidden mr-8">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/330px-Flag_of_France.svg.png"
+                alt="France Flag"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Current Team */}
+            <span className="text-[16px] text-[#555] dark:text-[#aaa] mr-8">Equipo Actual</span>
+            <div className="w-[32px] h-[32px]">
+              <img
+                src="https://img.uefa.com/imgml/TP/teams/logos/240x240/50051.png"
+                alt="Real Madrid Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

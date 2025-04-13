@@ -1,107 +1,11 @@
 import React from "react";
-import styled from "styled-components";
-
-const CardContainer = styled.div`
-  max-width: 1250px;
-  margin: 0 auto;
-`;
-
-const LineupCardContainer = styled.div`
-  background-color: #111517;
-  border-radius: 12px;
-  overflow: hidden;
-  color: white;
-  font-family: "Nunito Sans", sans-serif;
-  box-shadow: 0 10px 20px #111517, 0 0 0px #BEBEBE;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-`;
-
-const CardTitle = styled.h3`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 18px;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
-  margin: 0 0 1rem 0;
-  color: white;
-  text-transform: uppercase;
-`;
-
-const TeamSection = styled.div`
-  padding: 1.5rem;
-  &:first-child {
-    border-right: 1px solid #222;
-  }
-`;
-
-const TeamHeader = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-`;
-
-const TeamLogo = styled.div`
-  width: 36px;
-  height: 36px;
-  margin-right: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const TeamImage = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-`;
-
-const TeamName = styled.h4`
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #fff;
-`;
-
-const PlayerRow = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.25rem;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const PlayerAvatar = styled.div`
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 1rem;
-  background-color: #222;
-`;
-
-const PlayerImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-const PlayerName = styled.p`
-  font-size: 16px;
-  margin: 0;
-`;
 
 const StartingLineup: React.FC = () => {
   const teams = [
     {
       id: 1,
       name: "REAL MADRID",
-      logo: "/api/placeholder/36/36",
+      logo: "https://img.uefa.com/imgml/TP/teams/logos/240x240/50051.png",
       players: [
         { id: 1, name: "Mbappe", avatar: "/api/placeholder/48/48" },
         { id: 2, name: "Raphina", avatar: "/api/placeholder/48/48" },
@@ -114,7 +18,7 @@ const StartingLineup: React.FC = () => {
     {
       id: 2,
       name: "MANCHESTER CITY",
-      logo: "/api/placeholder/36/36",
+      logo: "https://a.espncdn.com/i/teamlogos/soccer/500-dark/382.png",
       players: [
         { id: 1, name: "Mbappe", avatar: "/api/placeholder/48/48" },
         { id: 2, name: "Raphina", avatar: "/api/placeholder/48/48" },
@@ -127,30 +31,34 @@ const StartingLineup: React.FC = () => {
   ];
 
   return (
-    <CardContainer>
-      <CardTitle>Titulares</CardTitle>
-      <LineupCardContainer>
+    <div className="max-w-[1250px] mx-auto text-black dark:text-white font-nunito">
+      <h3 className="text-[18px] font-bold uppercase mb-4 text-black dark:text-white">
+        Titulares
+      </h3>
+      <div className="grid grid-cols-2 gap-6 bg-white dark:bg-[#111517] rounded-xl p-6 shadow-lg border border-[#ccc] dark:border-[#333]">
         {teams.map((team) => (
-          <TeamSection key={team.id}>
-            <TeamHeader>
-              <TeamLogo>
-                <TeamImage src={team.logo} alt={team.name} />
-              </TeamLogo>
-              <TeamName>{team.name}</TeamName>
-            </TeamHeader>
-            
+          <div key={team.id} className="p-6 first:border-r first:border-[#222]">
+            <div className="flex items-center mb-6">
+              <div className="w-[36px] h-[36px] mr-4 flex items-center justify-center">
+                <img src={team.logo} alt={team.name} className="max-w-full max-h-full" />
+              </div>
+              <h4 className="text-[16px] font-semibold text-black dark:text-white uppercase tracking-[0.5px]">
+                {team.name}
+              </h4>
+            </div>
+
             {team.players.map((player) => (
-              <PlayerRow key={player.id}>
-                <PlayerAvatar>
-                  <PlayerImage src={player.avatar} alt={player.name} />
-                </PlayerAvatar>
-                <PlayerName>{player.name}</PlayerName>
-              </PlayerRow>
+              <div key={player.id} className="flex items-center mb-5 last:mb-0">
+                <div className="w-[48px] h-[48px] rounded-full overflow-hidden mr-4 bg-[#222]">
+                  <img src={player.avatar} alt={player.name} className="w-full h-full object-cover" />
+                </div>
+                <p className="text-[16px] text-black dark:text-white">{player.name}</p>
+              </div>
             ))}
-          </TeamSection>
+          </div>
         ))}
-      </LineupCardContainer>
-    </CardContainer>
+      </div>
+    </div>
   );
 };
 

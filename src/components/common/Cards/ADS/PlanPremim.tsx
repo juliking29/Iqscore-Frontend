@@ -1,85 +1,28 @@
 import React from "react";
-import styled from "styled-components";
 import { FaArrowRight } from "react-icons/fa";
 
-const CardContainer = styled.div`
-  max-width: 1240px;
-  margin: 0 auto;
-`;
-
-const Title = styled.h2`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 18px;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
-  margin: 0 0 1rem 0;
-  color: white;
-  text-transform: uppercase;
-`;
-
-const PremiumBanner = styled.div`
-  background-color: #354AED;
-  border-radius: 12px;
-  padding: 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: transform 0.2s;
-  
-  &:hover {
-    transform: translateY(-2px);
-  }
-`;
-
-const ContentSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const BannerText = styled.div`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 18px;
-  color: white;
-  font-weight: 500;
-`;
-
-const ArrowButton = styled.div`
-  background-color: rgba(255, 255, 255, 0.8);
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #3949ab;
-`;
-
 const PlanPremium: React.FC = () => {
-    return (
-    <CardContainer>
-      <Title>Plan Premium</Title>
-      <PremiumBanner>
-        <ContentSection>
-          <img 
-            src="https://cdn-icons-png.flaticon.com/512/2095/2095163.png" 
-            alt="Goal" 
-            style={{ width: '80px', height: '70px', objectFit: 'contain' }} 
+  return (
+    <div className="max-w-[1240px] mx-auto text-black dark:text-white font-nunito">
+      <h2 className="text-[18px] font-bold uppercase mb-4">
+      Plan Premium
+      </h2>
+      <div className="bg-[#354AED] rounded-xl p-5 flex items-center justify-between cursor-pointer transition-transform duration-200 hover:-translate-y-0.5">
+        <div className="flex items-center gap-4">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2095/2095163.png"
+            alt="Goal"
+            className="w-[80px] h-[70px] object-contain"
           />
-          <BannerText>
+          <p className="text-white font-medium text-[18px] font-nunito">
             Disfruta de los beneficios del plan premium
-          </BannerText>
-        </ContentSection>
-        <ArrowButton>
+          </p>
+        </div>
+        <div className="bg-white/80 w-9 h-9 rounded-md flex items-center justify-center text-[#3949ab]">
           <FaArrowRight />
-        </ArrowButton>
-      </PremiumBanner>
-    </CardContainer>
+        </div>
+      </div>
+    </div>
   );
 };
 
