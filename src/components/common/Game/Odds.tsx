@@ -28,6 +28,8 @@ const BettingOdds: React.FC = () => {
     },
   ];
 
+  const labels = ["1", "X", "2"]; // Local, Empate, Visitante
+
   return (
     <div className="max-w-[1240px] mx-auto font-nunito text-black dark:text-white">
       <h3 className="text-[18px] font-bold uppercase mb-4">CUOTAS</h3>
@@ -46,11 +48,13 @@ const BettingOdds: React.FC = () => {
             </div>
             <div className="flex justify-between flex-grow max-w-[300px] gap-4">
               {bookmaker.odds.map((odd, index) => (
-                <div
-                  key={index}
-                  className="bg-purple-700 text-white font-semibold px-4 py-2 rounded text-center w-[90px]"
-                >
-                  {odd}
+                <div key={index} className="flex flex-col items-center text-center w-[90px]">
+                  <div className="bg-purple-700 text-white font-semibold px-4 py-2 rounded w-full">
+                    {odd}
+                  </div>
+                  <span className="text-xs text-black dark:text-gray-300 mt-1 font-semibold">
+                    {labels[index]}
+                  </span>
                 </div>
               ))}
             </div>

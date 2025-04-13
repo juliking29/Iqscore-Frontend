@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import AD1 from '../components/common/Cards/ADS/Ad1';
 import PlayerProfile from '../components/common/Player/ProfilePlayer';
 import PlayerTrajectory from '../components/common/Player/TeamsPlayer';
+import Statistics from '../components/common/Player/statistics';
 
 const Container = styled.div`
   width: 100%;
@@ -59,8 +60,14 @@ const Player: React.FC = () => {
                       <div>
                         <PlayerTrajectory />
                       </div>
+
                     </RightColumn>
                 </TwoColumnContainer>
+
+                <FullWidthSection>
+                  <Statistics />
+                </FullWidthSection>
+                
             </Container>
         </PageWithLayout>
     )

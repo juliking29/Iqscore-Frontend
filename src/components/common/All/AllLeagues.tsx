@@ -28,8 +28,8 @@ const AllLeague = () => {
   ];
 
   return (
-    <div className="max-w-screen-xl mx-auto">
-      <h2 className="font-nunito text-black text-[18px] font-semibold not-italic uppercase mb-4 dark:text-white">Ligas</h2>
+    <div className="max-w-[1240px] mx-auto text-black dark:text-white font-nunito">
+      <h2 className="text-[18px] font-bold uppercase mb-4">Ligas</h2>
       <div className="relative bg-white p-6 rounded-lg shadow-lg border border-[#ccc] dark:bg-[#1B1D20] dark:border-[#333]">
         <div className="flex flex-col gap-5">
           {competitions.map((competition) => (
