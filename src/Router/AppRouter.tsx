@@ -6,6 +6,7 @@ import Leagues from '../views/Leagues'
 import Teams from '../views/Teams'
 import Game from '../views/Game'
 import Player from '../views/Player'
+import AboutUs from '../views/About'
 
 export const router = createBrowserRouter([
     {
@@ -35,5 +36,9 @@ export const router = createBrowserRouter([
     {
         path: '/player',
         element: <Player />
+    },
+    {
+        path: '/AboutUs',
+        element: <AboutUs />
     }
 ])

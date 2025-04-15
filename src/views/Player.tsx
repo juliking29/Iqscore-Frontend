@@ -5,6 +5,7 @@ import AD1 from '../components/common/Cards/ADS/Ad1';
 import PlayerProfile from '../components/common/Player/ProfilePlayer';
 import PlayerTrajectory from '../components/common/Player/TeamsPlayer';
 import Statistics from '../components/common/Player/statistics';
+import NationalTeam from '../components/common/Player/NationalTeam';
 
 const Container = styled.div`
   width: 100%;
@@ -66,6 +67,19 @@ const Player: React.FC = () => {
 
                 <FullWidthSection>
                   <Statistics />
+                </FullWidthSection>
+
+                <TwoColumnContainer>
+                <LeftColumn>
+                    <div>
+                  <NationalTeam />
+                  </div>
+                </LeftColumn>
+                </TwoColumnContainer>
+
+
+                <FullWidthSection>
+                    <AD1 />
                 </FullWidthSection>
                 
             </Container>
