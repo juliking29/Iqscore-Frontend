@@ -86,8 +86,8 @@ const TeamGames: React.FC<Partial<ProximosPartidosProps>> = (props) => {
     <div className="max-w-[1240px] mx-auto text-white">
       <h1 className="font-['Nunito_Sans'] text-lg m-0 mb-4 text-white uppercase">PRÓXIMOS PARTIDOS</h1>
       
-      {leagues.map((league, index) => (
-        <div key={index} className="shadow-[0_10px_20px_#111517,0_0_0px_#BEBEBE] mb-6 bg-[#1c1f22] rounded-lg overflow-hidden">
+      {leagues.map((league) => (
+        <div key={league.name} className="shadow-[0_10px_20px_#111517,0_0_0px_#BEBEBE] mb-6 bg-[#1c1f22] rounded-lg overflow-hidden">
           <div className="flex items-center p-3 bg-[#1e2226] border-b border-[#333]">
             <img 
               src={league.logo} 
@@ -98,8 +98,8 @@ const TeamGames: React.FC<Partial<ProximosPartidosProps>> = (props) => {
           </div>
           
           <div className="p-3">
-            {league.matches.map((match, matchIndex) => (
-              <div key={matchIndex} className="grid grid-cols-[35%_12%_35%_18%] items-center p-2 mb-3">
+            {league.matches.map((match) => (
+              <div key={match.homeTeam.name} className="grid grid-cols-[35%_12%_35%_18%] items-center p-2 mb-3">
                 <div className="flex items-center justify-end flex-row-reverse">
                   <span className="font-['Nunito_Sans'] text-sm text-white whitespace-nowrap overflow-hidden text-ellipsis">{match.homeTeam.name}</span>
                   <img 
