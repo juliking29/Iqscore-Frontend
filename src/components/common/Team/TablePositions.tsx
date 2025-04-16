@@ -39,20 +39,20 @@ const TablePositions: React.FC = () => {
           <div className="text-center">PTS</div>
         </div>
         {tablaData.map((team) => (
-          <div 
-            key={team.pos} 
+          <div
+            key={team.pos}
             className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1fr_1.5fr_1fr] items-center py-3 px-6 border-b border-[#222] text-sm last:border-b-0"
           >
             <div>
               <div className="font-medium text-[#aaa]">{team.pos}</div>
             </div>
-            <div>{team.equipo}</div>
-            <div className="text-center">{team.pj}</div>
-            <div className="text-center">{team.g}</div>
-            <div className="text-center">{team.e}</div>
-            <div className="text-center">{team.p}</div>
-            <div className="text-center">{team.gfgc}</div>
-            <div className="text-center">{team.pts}</div>
+            <div className=" mb-2 text-black dark:text-white">{team.equipo}</div>
+            <div className="text-center mb-2 text-black dark:text-white">{team.pj}</div>
+            <div className="text-center mb-2 text-black dark:text-white">{team.g}</div>
+            <div className="text-center  mb-2 text-black dark:text-white">{team.e}</div>
+            <div className="text-center  mb-2 text-black dark:text-white">{team.p}</div>
+            <div className="text-center  mb-2 text-black dark:text-white">{team.gfgc}</div>
+            <div className="text-center  mb-2 text-black dark:text-white">{team.pts}</div>
           </div>
         ))}
       </div>

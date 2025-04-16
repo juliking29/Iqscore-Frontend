@@ -42,7 +42,7 @@ const PlayerTeam: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-[1240px] mx-auto text-black dark:text-white font-nunito">
+    <div className="max-w-[1240px] mx-auto mb-2 text-black dark:text-white">
       <h3 className="text-[18px] font-bold uppercase mb-2 text-black dark:text-white">JUGADORES</h3>
       <div className="relative bg-white dark:bg-[#1B1D20] p-6 rounded-lg shadow-lg border border-[#ccc] dark:border-[#333]">
         <div className="flex items-center py-3 px-6 border-b border-[#222]">
@@ -52,12 +52,12 @@ const PlayerTeam: React.FC = () => {
         <div className="flex flex-col">
           {playersData.map((player) => (
             <div key={player.id} className="flex items-center py-3 px-6">
-              <div className="w-6 mr-4 text-sm text-gray-400">{player.number}</div>
+              <div className="w-6 mr-4 text-sm mb-2 text-black dark:text-white">{player.number}</div>
               <div className="flex items-center gap-3 flex-1">
                 <div className="w-8 h-8 rounded-full overflow-hidden bg-[#2a2a2a]">
                   <img src={player.image} alt={player.name} className="w-full h-full object-cover" />
                 </div>
-                <span className="text-sm font-medium">{player.name}</span>
+                <span className="text-sm font-medium mb-2 text-black dark:text-white">{player.name}</span>
               </div>
             </div>
           ))}
