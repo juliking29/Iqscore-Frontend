@@ -10,9 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@tailwindcss/postcss": "^4.1.3",
+    "@tailwindcss/vite": "^4.1.3",
     "bootstrap": "^5.3.3",
+    "framer-motion": "^12.7.3",
+    "lucide-react": "^0.488.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^7.2.0",
     "styled-components": "^6.1.15"
   },
@@ -22,12 +28,29 @@
     "@types/react-dom": "^19.0.3",
     "@types/styled-components": "^5.1.34",
     "@vitejs/plugin-react": "^4.3.4",
+    "auto": "^11.3.0",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.19.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.1",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.22.0",
     "vite": "^6.1.0"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alejop27/iqscore-front.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alejop27/iqscore-front/issues"
+  },
+  "homepage": "https://github.com/Alejop27/iqscore-front#readme"
 }

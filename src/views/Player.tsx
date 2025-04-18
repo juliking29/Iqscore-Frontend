@@ -1,13 +1,18 @@
+import React from 'react';
 import PageWithLayout from '../components/PageWithLayout';
 import styled from 'styled-components';
-import React from 'react';
 import AD1 from '../components/common/Cards/ADS/Ad1';
+import PlayerProfile from '../components/common/Player/ProfilePlayer';
+import PlayerTrajectory from '../components/common/Player/TeamsPlayer';
+import Statistics from '../components/common/Player/statistics';
+import NationalTeam from '../components/common/Player/NationalTeam';
 
 const Container = styled.div`
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
   padding: 0;
+  margin-top: 100px; /* Esto da espacio para el navbar fijo */
 `;
 
 const FullWidthSection = styled.div`
@@ -18,7 +23,7 @@ const FullWidthSection = styled.div`
 
 const TwoColumnContainer = styled.div`
   display: grid;
-  grid-template-columns: 35% 63%;
+  grid-template-columns: 50% 50%;
   width: 100%;
   gap: 2rem;
   margin: 30px 0;
@@ -36,7 +41,7 @@ const RightColumn = styled.div`
   gap: 30px;
 `;
 
-const League: React.FC = () => {
+const Player: React.FC = () => {
     return (
         <PageWithLayout>
             <Container>
@@ -47,17 +52,39 @@ const League: React.FC = () => {
                 <TwoColumnContainer>
                     <LeftColumn>
                         <div>
-                        </div>
-
+                            <PlayerProfile />
+                        </div>  
                     </LeftColumn>
 
+
                     <RightColumn>
+                      <div>
+                        <PlayerTrajectory />
+                      </div>
 
                     </RightColumn>
                 </TwoColumnContainer>
+
+                <FullWidthSection>
+                  <Statistics />
+                </FullWidthSection>
+
+                <TwoColumnContainer>
+                <LeftColumn>
+                    <div>
+                  <NationalTeam />
+                  </div>
+                </LeftColumn>
+                </TwoColumnContainer>
+
+
+                <FullWidthSection>
+                    <AD1 />
+                </FullWidthSection>
+                
             </Container>
         </PageWithLayout>
     )
 }
 
-export default League;
+export default Player;

@@ -1,13 +1,19 @@
-import PageWithLayout from '../components/PageWithLayout';
-import styled from 'styled-components';
 import React from 'react';
+import styled from 'styled-components';
+import PageWithLayout from '../components/PageWithLayout';
 import AD1 from '../components/common/Cards/ADS/Ad1';
+import MatchInfo from '../components/common/Game/InfoGame';
+import BettingOdds from '../components/common/Game/Odds';
+import StartingLineup from '../components/common/Game/Headlines';
+import Ad3 from '../components/common/Cards/ADS/Ad3';
 
 const Container = styled.div`
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
   padding: 0;
+  margin-top: 100px;
+
 `;
 
 const FullWidthSection = styled.div`
@@ -18,9 +24,9 @@ const FullWidthSection = styled.div`
 
 const TwoColumnContainer = styled.div`
   display: grid;
-  grid-template-columns: 35% 63%;
+  grid-template-columns: 60% 38%;
   width: 100%;
-  gap: 2rem;
+  gap: 1rem;
   margin: 30px 0;
 `;
 
@@ -36,7 +42,7 @@ const RightColumn = styled.div`
   gap: 30px;
 `;
 
-const League: React.FC = () => {
+const Game: React.FC = () => {
     return (
         <PageWithLayout>
             <Container>
@@ -47,17 +53,29 @@ const League: React.FC = () => {
                 <TwoColumnContainer>
                     <LeftColumn>
                         <div>
+                            <MatchInfo />
+                        </div>
+                        <div>
+                            <StartingLineup />
                         </div>
 
                     </LeftColumn>
 
                     <RightColumn>
-
+                        <div>
+                            <BettingOdds />
+                        </div>
+                        <div>
+                            <Ad3 />
+                        </div>
                     </RightColumn>
                 </TwoColumnContainer>
+                <FullWidthSection>
+                    <AD1 />
+                </FullWidthSection>
             </Container>
         </PageWithLayout>
     )
 }
 
-export default League;
+export default Game;

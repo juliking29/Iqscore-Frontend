@@ -1,248 +1,97 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { useTheme } from '../../../contexts/ThemeContext';
+import React, { useState, useEffect } from "react";
+import { FaUser, FaCog, FaSearch } from "react-icons/fa";
 
-interface NavbarProps {
-  onSearch?: (query: string) => void;
-}
+const Navbar: React.FC = () => {
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) return savedTheme;
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+    return "light";
+  });
 
-const NavbarContainer = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #181818;
-  color: white;
-  padding: 12px 24px;
-  width: 100%;|
-  position: relative;
-  box-sizing: border-box;
-  max-width: 100vw;
-  overflow-x: hidden;
-  border-bottom-left-radius: 20px;  
-  border-bottom-right-radius: 20px; 
+  useEffect(() => {
+    const html = document.querySelector("html");
+    theme === "dark" ? html?.classList.add("dark") : html?.classList.remove("dark");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
-  @media (max-width: 768px) {
-    flex-wrap: wrap;
-    padding: 12px 16px;
-  }
-`;
-
-const NavbarLeft = styled.div`
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    justify-content: space-between;
-  }
-`;
-
-const LogoCircle = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #eab308;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-weight: bold;
-  margin-right: 24px;
-  flex-shrink: 0;
-
-  @media (max-width: 768px) {
-    margin-right: 0;
-  }
-`;
-
-const NavLinks = styled.div<{ isOpen: boolean }>`
-  display: flex;
-  gap: 24px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 16px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #282829;
-    padding: 16px;
-    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-    z-index: 100;
-    border-bottom-left-radius: 20px;  
-    border-bottom-right-radius: 20px; 
-  }
-`;
-
-const NavLink = styled(Link)`
-  font-size: 18px;
-  font-weight: 500;
-  text-decoration: none;
-  color: white;
-  white-space: nowrap;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
-const HamburgerMenu = styled.button`
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    display: block;
-  }
-`;
-
-const NavbarRight = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px; // Espacio entre el botón de tema y el buscador
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-top: 16px;
-    justify-content: space-between;
-  }
-`;
-
-const SearchContainer = styled.div`
-  width: 0%;
-  min-width: 400px;
-  max-width: 600px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    max-width: 100%;
-    order: 2;
-  }
-`;
-
-const SearchInputWrapper = styled.div`
-  position: relative;
-  width: 100%;
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
-  background-color: #3B3B3C;
-  color: white;
-  border-radius: 9999px;
-  padding: 8px 16px 8px 40px;
-  border: none;
-  outline: none;
-  box-sizing: border-box;
-
-  &::placeholder {
-    color: #a0a0a0;
-  }
-`;
-
-const SearchIcon = styled.button`
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #a0a0a0;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  cursor: pointer;
-`;
-
-const ThemeToggleButton = styled.button`
-  background: none;
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: background-color 0.3s;
-  
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-`;
-
-const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
-
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const query = formData.get('searchQuery') as string;
-    if (onSearch) {
-      onSearch(query);
-    }
+  const handleThemeChange = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-  return (
-    <NavbarContainer>
-      <NavbarLeft>
-        <Link to="/">
-          <LogoCircle>J</LogoCircle>
-        </Link>
-        <HamburgerMenu onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          ☰
-        </HamburgerMenu>
-        <NavLinks isOpen={isMenuOpen}>
-          <NavLink to="/">Incio</NavLink>
-          <NavLink to="/league">Ligas</NavLink>
-          <NavLink to="/team">Equipos</NavLink>
-        </NavLinks>
-      </NavbarLeft>
+  const [search, setSearch] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
-      <NavbarRight>
-        <ThemeToggleButton onClick={toggleTheme} title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
-          {theme === 'dark' ? '☀️' : '🌙'}
-        </ThemeToggleButton>
+  return (
+    <div className="fixed top-0 left-0 right-0 bg-[#2c3ec4] dark:bg-[#1B1D20] w-full z-50">
+      <nav className="font-sans font-semibold text-white px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between h-20 max-w-[1280px] w-full mx-auto">
         
-        <SearchContainer>
-          <form onSubmit={handleSearch}>
-            <SearchInputWrapper>
-              <SearchInput
-                type="text"
-                name="searchQuery"
-                placeholder="Busca una liga o equipo"
-              />
-              <SearchIcon type="submit">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  width="16"
-                  height="16"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </SearchIcon>
-            </SearchInputWrapper>
-          </form>
-        </SearchContainer>
-      </NavbarRight>
-    </NavbarContainer>
+        {/* Logo + Search */}
+        <div className="flex items-center gap-4 sm:gap-6 w-full max-w-[600px]">
+          <div className="text-lg font-bold whitespace-nowrap">logo</div>
+
+          <div className="relative flex-grow">
+            <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-[#EAEAEA]">
+              <FaSearch />
+            </div>
+            <input
+              type="text"
+              placeholder="Busca en IQSCORE"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full text-black dark:text-white bg-[#f3f4f6] dark:bg-[#20262A] py-2 pl-10 pr-4 rounded-md shadow-sm border border-gray-300 dark:border-none outline-none placeholder-gray-500 dark:placeholder-[#EAEAEA] transition focus:ring-2 focus:ring-[#2c3ec4] dark:focus:ring-[#4c51bf] text-sm sm:text-base"
+            />
+          </div>
+        </div>
+
+      {/* Right side */}
+      <div className="hidden md:flex items-center gap-4 lg:gap-6">
+      <a
+        href="Leagues"
+        className="text-white hover:bg-gray-400 dark:hover:bg-[#2a2a2a] px-2 py-1 rounded-md transition duration-200 ease-in-out hover:shadow-sm"
+      >
+        LIGAS
+      </a>
+      <a
+        href="Teams"
+        className="text-white hover:bg-gray-400 dark:hover:bg-[#2a2a2a] px-2 py-1 rounded-md transition duration-200 ease-in-out hover:shadow-sm"
+      >
+        EQUIPOS
+      </a>
+      <a
+        href="#"
+        className="text-white hover:bg-gray-400 dark:hover:bg-[#2a2a2a] px-2 py-1 rounded-md transition duration-200 ease-in-out hover:shadow-sm"
+      >
+        FAVORITOS
+      </a>
+
+        <button className="bg-[#EAEAEA] py-2 px-4 rounded-md flex items-center gap-2 text-[#1D1B20] font-bold hover:bg-[#d6d6d6] transition text-sm sm:text-base">
+          <FaUser /> <span>INICIAR</span>
+        </button>
+
+        {/* Cog and Theme Menu */}
+        <div className="relative">
+          <button
+            className="text-white hover:text-gray-300 transition text-xl"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <FaCog />
+          </button>
+          {menuOpen && (
+            <div className="absolute left-[-110px] mt-2 bg-white dark:bg-[#2b2b2b] p-4 rounded-lg shadow-lg w-48 z-20">
+              <p className="font-semibold text-gray-700 dark:text-gray-200">Opciones de Modo</p>
+              <button
+                className="mt-2 w-full py-2 px-4 bg-[#4a5568] text-white rounded-md hover:bg-[#1D1B20] transition"
+                onClick={handleThemeChange}
+              >
+                Claro/Oscuro
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+      </nav>
+    </div>
   );
 };
 
