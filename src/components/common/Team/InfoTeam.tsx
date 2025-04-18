@@ -2,14 +2,14 @@ import React from "react";
 
 const InfoTeam: React.FC = () => {
   return (
-    <div className="max-w-[1240px] mx-auto">
-      <h3 className="text-white text-[18px] font-sans uppercase mb-4">
+    <div className="max-w-[1240px] mx-auto mb-2 text-black dark:text-white">
+      <h3 className="text-black dark:text-white text-[18px] font-sans uppercase mb-4">
         América de Cali
       </h3>
       
-      <div className="bg-[#111517] rounded-xl overflow-hidden text-white font-sans shadow-[0_10px_20px_#111517,0_0_0_#BEBEBE] px-6 py-4 flex items-center justify-between max-w-[1240px]">
+      <div className=" rounded-xl  bg-white p-6  shadow-lg border border-[#ccc] dark:bg-[#1B1D20] dark:border-[#333] flex items-center justify-between max-w-[1240px]">
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ">
           <div className="w-16 h-16 overflow-hidden bg-transparent">
             <img
               src="https://a.espncdn.com/i/teamlogos/soccer/500/8109.png"

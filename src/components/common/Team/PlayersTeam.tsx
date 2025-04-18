@@ -1,97 +1,5 @@
+
 import React from "react";
-import styled from "styled-components";
-
-const CardContainer = styled.div`
-  max-width: 1240px;
-  margin: 0 auto;
-`;
-
-const PlayersCardContainer = styled.div`
-  background-color: #111517;
-  border-radius: 12px;
-  overflow: hidden;
-  color: white;
-  font-family: "Nunito Sans", sans-serif;
-  box-shadow: 0 10px 20px #111517, 0 0 0px #BEBEBE;
-  max-width: 1250px;
-`;
-
-const CardTitle = styled.h3`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 18px;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
-  margin: 0 0 1rem 0;
-  color: white;
-  text-transform: uppercase;
-`;
-
-const PlayersList = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const PlayerRow = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-`;
-
-const PlayerNumber = styled.div`
-  width: 24px;
-  margin-right: 1rem;
-  font-size: 14px;
-  color: #999;
-`;
-
-const PlayerInfo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex: 1;
-`;
-
-const PlayerAvatar = styled.div`
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: #2a2a2a;
-`;
-
-const PlayerImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-const PlayerName = styled.span`
-  font-size: 14px;
-  font-weight: 500;
-`;
-
-const HeaderRow = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-  border-bottom: 1px solid #222;
-`;
-
-const HeaderNumber = styled.div`
-  width: 24px;
-  margin-right: 1rem;
-  font-size: 14px;
-  color: #999;
-`;
-
-const HeaderLabel = styled.span`
-  font-size: 14px;
-  font-weight: 500;
-  color: #999;
-`;
 
 const PlayerTeam: React.FC = () => {
   const playersData = [
@@ -134,28 +42,28 @@ const PlayerTeam: React.FC = () => {
   ];
 
   return (
-    <CardContainer>
-        <CardTitle>JUGADORES</CardTitle>
-      <PlayersCardContainer>
-        <HeaderRow>
-          <HeaderNumber>#</HeaderNumber>
-          <HeaderLabel>Jugador</HeaderLabel>
-        </HeaderRow>
-        <PlayersList>
+    <div className="max-w-[1240px] mx-auto mb-2 text-black dark:text-white">
+      <h3 className="text-[18px] font-bold uppercase mb-2 text-black dark:text-white">JUGADORES</h3>
+      <div className="relative bg-white dark:bg-[#1B1D20] p-6 rounded-lg shadow-lg border border-[#ccc] dark:border-[#333]">
+        <div className="flex items-center py-3 px-6 border-b border-[#222]">
+          <div className="w-6 mr-4 text-sm text-gray-400">#</div>
+          <span className="text-sm font-medium text-gray-400">Jugador</span>
+        </div>
+        <div className="flex flex-col">
           {playersData.map((player) => (
-            <PlayerRow key={player.id}>
-              <PlayerNumber>{player.number}</PlayerNumber>
-              <PlayerInfo>
-                <PlayerAvatar>
-                  <PlayerImage src={player.image} alt={player.name} />
-                </PlayerAvatar>
-                <PlayerName>{player.name}</PlayerName>
-              </PlayerInfo>
-            </PlayerRow>
+            <div key={player.id} className="flex items-center py-3 px-6">
+              <div className="w-6 mr-4 text-sm mb-2 text-black dark:text-white">{player.number}</div>
+              <div className="flex items-center gap-3 flex-1">
+                <div className="w-8 h-8 rounded-full overflow-hidden bg-[#2a2a2a]">
+                  <img src={player.image} alt={player.name} className="w-full h-full object-cover" />
+                </div>
+                <span className="text-sm font-medium mb-2 text-black dark:text-white">{player.name}</span>
+              </div>
+            </div>
           ))}
-        </PlayersList>
-      </PlayersCardContainer>
-    </CardContainer>
+        </div>
+      </div>
+    </div>
   );
 };
 

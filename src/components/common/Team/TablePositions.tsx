@@ -1,70 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-
-const CardContainer = styled.div`
-  max-width: 1240px;
-  margin: 0 auto;
-`;
-
-const TableCardContainer = styled.div`
-  background-color: #111517;
-  border-radius: 12px;
-  overflow: hidden;
-  color: white;
-  font-family: "Nunito Sans", sans-serif;
-  box-shadow: 0 10px 20px #111517, 0 0 0px #BEBEBE;
-  max-width: 1240px;
-`;
-
-const CardTitle = styled.h3`
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 18px;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
-  margin: 0 0 1rem 0;
-  color: white;
-  text-transform: uppercase;
-`;
-
-const TableHeader = styled.div`
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr 1.5fr 1fr;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-  background-color: #8400FF;
-  color: white;
-  font-weight: 600;
-  font-size: 14px;
-`;
-
-const TableRow = styled.div`
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr 1.5fr 1fr;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-  border-bottom: 1px solid #222;
-  font-size: 14px;
-  
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-
-const HeaderCell = styled.div`
-  text-align: ${props => props.align || "left"};
-`;
-
-const Cell = styled.div`
-  text-align: ${props => props.align || "left"};
-`;
-
-const PositionNumber = styled.div`
-  font-weight: 500;
-  color: #aaa;
-`;
 
 const TablePositions: React.FC = () => {
   const tablaData = [
@@ -91,35 +25,38 @@ const TablePositions: React.FC = () => {
   ];
 
   return (
-    <CardContainer>
-        <CardTitle>Tabla de posiciones</CardTitle>
-      <TableCardContainer>
-        <TableHeader>
-          <HeaderCell>#</HeaderCell>
-          <HeaderCell>Equipo</HeaderCell>
-          <HeaderCell align="center">PJ</HeaderCell>
-          <HeaderCell align="center">G</HeaderCell>
-          <HeaderCell align="center">E</HeaderCell>
-          <HeaderCell align="center">P</HeaderCell>
-          <HeaderCell align="center">GF:GC</HeaderCell>
-          <HeaderCell align="center">PTS</HeaderCell>
-        </TableHeader>
-          {tablaData.map((team) => (
-            <TableRow key={team.pos}>
-              <Cell>
-                <PositionNumber>{team.pos}</PositionNumber>
-              </Cell>
-              <Cell>{team.equipo}</Cell>
-              <Cell align="center">{team.pj}</Cell>
-              <Cell align="center">{team.g}</Cell>
-              <Cell align="center">{team.e}</Cell>
-              <Cell align="center">{team.p}</Cell>
-              <Cell align="center">{team.gfgc}</Cell>
-              <Cell align="center">{team.pts}</Cell>
-            </TableRow>
-          ))}
-      </TableCardContainer>
-    </CardContainer>
+    <div className="max-w-[1240px] mx-auto text-black dark:text-white font-nunito">
+      <h3 className="font-['Nunito_Sans'] text-lg text-white uppercase mb-4">Tabla de posiciones</h3>
+      <div className="relative bg-white dark:bg-[#1B1D20] p-6 rounded-lg shadow-lg border border-[#ccc] dark:border-[#333]">
+        <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1fr_1.5fr_1fr] items-center py-3 px-6 bg-[#8400FF] text-white font-semibold text-sm">
+          <div>#</div>
+          <div>Equipo</div>
+          <div className="text-center">PJ</div>
+          <div className="text-center">G</div>
+          <div className="text-center">E</div>
+          <div className="text-center">P</div>
+          <div className="text-center">GF:GC</div>
+          <div className="text-center">PTS</div>
+        </div>
+        {tablaData.map((team) => (
+          <div
+            key={team.pos}
+            className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1fr_1.5fr_1fr] items-center py-3 px-6 border-b border-[#222] text-sm last:border-b-0"
+          >
+            <div>
+              <div className="font-medium text-[#aaa]">{team.pos}</div>
+            </div>
+            <div className=" mb-2 text-black dark:text-white">{team.equipo}</div>
+            <div className="text-center mb-2 text-black dark:text-white">{team.pj}</div>
+            <div className="text-center mb-2 text-black dark:text-white">{team.g}</div>
+            <div className="text-center  mb-2 text-black dark:text-white">{team.e}</div>
+            <div className="text-center  mb-2 text-black dark:text-white">{team.p}</div>
+            <div className="text-center  mb-2 text-black dark:text-white">{team.gfgc}</div>
+            <div className="text-center  mb-2 text-black dark:text-white">{team.pts}</div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
