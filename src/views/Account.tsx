@@ -1,18 +1,16 @@
-import PageWithLayout from '../components/PageWithLayout';
+import React from "react";
 import styled from 'styled-components';
-import React from 'react';
+import PageWithLayout from "../components/PageWithLayout";
 import AD1 from '../components/common/Cards/ADS/Ad1';
-import PlayerTeam from '../components/common/Team/PlayersTeam';
-import TablePositions from '../components/common/Team/TablePositionsTeam';
-import TeamGames from '../components/common/Team/TeamGames';
-import TeamContainer from '../components/common/Team/TeamContainer';
-import { useParams } from 'react-router-dom';
+import PaymentGateway from "../components/common/Account/PaymentGateway";
 
 const Container = styled.div`
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
   padding: 0;
+  margin-top: 100px; /* Esto da espacio para el navbar fijo */
+
 `;
 
 const FullWidthSection = styled.div`
@@ -23,7 +21,7 @@ const FullWidthSection = styled.div`
 
 const TwoColumnContainer = styled.div`
   display: grid;
-  grid-template-columns: 35% 63%;
+  grid-template-columns: 40% 60%;
   width: 100%;
   gap: 2rem;
   margin: 30px 0;
@@ -41,8 +39,7 @@ const RightColumn = styled.div`
   gap: 30px;
 `;
 
-const Team: React.FC = () => {
-    const { teamId } = useParams<{ teamId: string }>(); // Get teamId from route parameters
+const Account: React.FC = () => {
     return (
         <PageWithLayout>
             <Container>
@@ -53,28 +50,22 @@ const Team: React.FC = () => {
                 <TwoColumnContainer>
                     <LeftColumn>
                         <div>
-                            <TeamContainer></TeamContainer>
+                            <PaymentGateway />
                         </div>
-
-                        <div>
-                            <PlayerTeam idEquipo={Number(teamId)} />
-                        </div>
-
                     </LeftColumn>
 
                     <RightColumn>
-                        <div>
-                            <TablePositions />
-                        </div>
 
-                        <div>
-                            <TeamGames />
-                        </div>
                     </RightColumn>
+
                 </TwoColumnContainer>
+
+                <FullWidthSection>
+                    <AD1 />
+                </FullWidthSection>
             </Container>
         </PageWithLayout>
     )
 }
 
-export default Team;
+export default Account;

@@ -8,6 +8,8 @@ const PlayerTrajectory: React.FC = () => {
   ];
 
   return (
+    <div className="w-full max-w-[1280px] mx-auto px-4 text-black dark:text-white font-nunito">
+      <h2 className="text-lg font-semibold mb-4">TRAYECTORIA</h2>
     <div className="max-w-[1250px] mx-auto">
       <div className="bg-white dark:bg-[#111517] rounded-lg overflow-hidden text-black dark:text-white font-nunito p-6 shadow-lg border border-[#ccc] dark:border-[#333]">
         <h3 className="text-[18px] font-semibold mb-5 flex items-center">
@@ -23,6 +25,7 @@ const PlayerTrajectory: React.FC = () => {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };
