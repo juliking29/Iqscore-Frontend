@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 
 interface PosicionEquipo {
   idPosicion: number;
@@ -16,15 +17,15 @@ interface PosicionEquipo {
 }
 
 const TablePositionsLeague: React.FC = () => {
-  const location = useLocation();
-  const { idLiga } = location.state as { idLiga: number };
+  const { idLiga } = useParams<{ idLiga: string }>();
+const ligaId = Number(idLiga);
   const [tablaData, setTablaData] = useState<PosicionEquipo[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTabla = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/posiciones_liga/liga/${idLiga}`);
+        const response = await fetch(`http://localhost:3001/api/posiciones_liga/liga/${ligaId}`);
         const data = await response.json();
         setTablaData(data);
       } catch (error) {

@@ -9,17 +9,50 @@ interface Team {
   logo: string;
 }
 
+interface League{
+  idLiga: number;
+  nombre: string
+}
+
 const AllTeams: React.FC = () => {
   const [teams, setTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
+  const [league, setLeagues] = useState<League[]>([]);
   const [selectedLeague, setSelectedLeague] = useState<string>("1"); // Default league ID
-  
+
   const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
-    // Fetch data from backend
+    //  fetch data leagues from backend
+    const fetchLeagues = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`http://localhost:3001/api/ligas`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data: any[] = await response.json();
+        const formattedLeagues: League[] = data.map((league) => ({
+          idLiga: league.idLiga,
+          nombre: league.nombre,
+        }));
+        setLeagues(formattedLeagues);
+        setError(null);
+      } catch (error) {
+        console.error("Error fetching leagues:", error);
+        setError("Failed to load leagues. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLeagues();
+  }, []);
+
+  useEffect(() => {
+    // Fetch data teams from backend
     const fetchTeams = async () => {
       try {
         setLoading(true);
@@ -31,7 +64,7 @@ const AllTeams: React.FC = () => {
         const formattedTeams: Team[] = data.map((team) => ({
           id: team.idEquipo.toString(),
           name: team.nombre,
-          logo: team.logo || getDefaultLogo(team.nombre), // Use logo from API or fallback
+          logo: team.logo ?? getDefaultLogo(team.nombre),
         }));
         setTeams(formattedTeams);
         setError(null);
@@ -75,9 +108,15 @@ const AllTeams: React.FC = () => {
           onChange={(e) => setSelectedLeague(e.target.value)}
           className="p-2 border rounded dark:bg-[#1B1D20] dark:border-[#333] dark:text-white"
         >
-          <option value="1">League 1</option>
-          <option value="2">League 2</option>
-          <option value="3">League 3</option>
+          {league.length > 0 ? (
+            league.map((league) => (
+              <option key={league.idLiga} value={league.idLiga.toString()}>
+                {league.nombre}
+              </option>
+            ))
+          ) : (
+            <option value="1">Loading leagues...</option>
+          )}
         </select>
       </div>
       <div className="relative bg-white p-6 rounded-lg shadow-lg border border-[#ccc] dark:bg-[#1B1D20] dark:border-[#333]">
@@ -92,35 +131,34 @@ const AllTeams: React.FC = () => {
         ) : (
           <div className="flex flex-col gap-5">
             {teams.map((team) => (
-            <div
-              key={team.id}
-              className="flex items-center justify-between py-2 cursor-pointer"
-              onClick={() => handleTeamClick(team.id)} // Add onClick to navigate
-            >
-              <div className="flex items-center gap-4">
-                <img
-                  src={team.logo}
-                  alt={`${team.name} Logo`}
-                  className="w-9 h-9 object-contain"
-                />
-                <span className="text-[18px]">{team.name}</span>
-              </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent navigation when clicking the favorite button
-                  toggleFavorite(team.id);
-                }}
-                className={`text-xl opacity-80 hover:opacity-100 focus:outline-none ${
-                  favorites[team.id]
-                    ? "text-red-500"
-                    : "text-black dark:text-white"
-                }`}
-                aria-label={favorites[team.id] ? "Remove from favorites" : "Add to favorites"}
+              <div
+                key={team.id}
+                className="flex items-center justify-between py-2 cursor-pointer"
+                onClick={() => handleTeamClick(team.id)} // Add onClick to navigate
               >
-                {favorites[team.id] ? <FaHeart /> : <FaRegHeart />}
-              </button>
-            </div>
-          ))}
+                <div className="flex items-center gap-4">
+                  <img
+                    src={team.logo}
+                    alt={`${team.name} Logo`}
+                    className="w-9 h-9 object-contain"
+                  />
+                  <span className="text-[18px]">{team.name}</span>
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent navigation when clicking the favorite button
+                    toggleFavorite(team.id);
+                  }}
+                  className={`text-xl opacity-80 hover:opacity-100 focus:outline-none ${favorites[team.id]
+                      ? "text-red-500"
+                      : "text-black dark:text-white"
+                    }`}
+                  aria-label={favorites[team.id] ? "Remove from favorites" : "Add to favorites"}
+                >
+                  {favorites[team.id] ? <FaHeart /> : <FaRegHeart />}
+                </button>
+              </div>
+            ))}
           </div>
         )}
       </div>

@@ -6,7 +6,7 @@ interface Player {
   edad: number;
   nacionalidad: string;
   valor_mercado: string;
-  nacinalidad_logo: string;
+  nacionalidad_logo: string;
   logo: string;
 }
 
@@ -19,7 +19,7 @@ const PlayerProfile: React.FC = () => {
     const fetchJugador = async () => {
       try {
         const response = await fetch(`http://localhost:3001/api/jugadores/${playerId}`);
-        const data = await response.json(); // ya es un objeto
+        const data = await response.json();
         setJugador(data);
       } catch (error) {
         console.error("Error al obtener jugador:", error);
@@ -43,46 +43,39 @@ const PlayerProfile: React.FC = () => {
   }
 
   return (
-    <div className="max-w-[1250px] mx-auto">
-      <div className="bg-white dark:bg-[#111517] rounded-lg overflow-hidden text-black dark:text-white font-nunito p-6 shadow-lg border border-[#ccc] dark:border-[#333] flex items-center">
-        {/* Player Avatar */}
-        <div className="w-[100px] h-[100px] rounded-full overflow-hidden bg-[#f0f0f0] dark:bg-[#111517] mr-6 flex-shrink-0">
-          <img
-            src={Player.logo}
-            alt="Kylian Mbappé"
-            className="w-full h-full object-cover"
-          />
-        </div>
+    <div className="w-full max-w-[1280px] mx-auto px-4 text-black dark:text-white font-nunito">
+      <h2 className="font-bold text-lg uppercase mb-4">{Player.nombre}</h2>
 
-        {/* Player Info */}
-        <div className="flex-grow">
-          {/* Player Name and Value */}
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-[20px] font-semibold m-0 text-black dark:text-white">{Player.nombre}</h3>
-            <span className="text-[18px] font-semibold text-black dark:text-white">{formatMarketValue(Player.valor_mercado)}</span>
+      <div className="max-w-[1250px] mx-auto">
+        <div className="bg-white dark:bg-[#111517] rounded-lg overflow-hidden text-black dark:text-white font-nunito p-6 shadow-lg border border-[#ccc] dark:border-[#333] flex items-center">
+          
+          {/* Avatar */}
+          <div className="w-[100px] h-[100px] rounded-full overflow-hidden bg-[#f0f0f0] dark:bg-[#111517] mr-6 flex-shrink-0">
+            <img src={Player.logo} alt={Player.nombre} className="w-full h-full object-cover" />
           </div>
 
-          {/* Player Details */}
-          <div className="flex items-center mb-4">
-            {/* Nationality */}
-            <span className="text-[16px] text-[#555] dark:text-[#aaa] mr-8">Nacionalidad</span><span className="text-[16px] text-[#555] dark:text-[#aaa] mr-8">{Player.nacionalidad}</span>
-            <div className="w-[32px] h-[24px] rounded-[4px] overflow-hidden mr-8">
-              <img
-                src={Player.nacinalidad_logo}
-                alt="France Flag"
-                className="w-full h-full object-cover"
-              />
+          {/* Info */}
+          <div className="flex-grow w-full">
+            {/* Name + Market Value */}
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-[20px] font-semibold m-0 text-black dark:text-white">{Player.nombre}</h3>
+              <span className="text-[18px] font-semibold text-black dark:text-white">
+                {formatMarketValue(Player.valor_mercado)}
+              </span>
             </div>
 
-            {/* Current Team */}
-            <span className="text-[16px] text-[#555] dark:text-[#aaa] mr-8">Equipo Actual</span>
-            <div className="w-[32px] h-[32px]">
-              <img
-                src={Player.logo}
-                alt="Real Madrid Logo"
-                className="w-full h-full object-contain"
-              />
+            {/* Nacionalidad alineada a la derecha */}
+            <div className="flex justify-end items-center space-x-2">
+              <span className="text-[16px] text-[#555] dark:text-[#aaa]">{Player.nacionalidad}</span>
+              <div className="w-[32px] h-[24px] rounded-[4px] overflow-hidden">
+                <img
+                  src={Player.nacionalidad_logo}
+                  alt={`Bandera de ${Player.nacionalidad}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
+
           </div>
         </div>
       </div>

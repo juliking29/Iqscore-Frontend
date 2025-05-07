@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 interface Scorer {
   idJugador: number;
@@ -10,14 +10,12 @@ interface Scorer {
 }
 
 const TopScorers: React.FC = () => {
+  const { idLiga } = useParams<{ idLiga: string }>();
   const [scorers, setScorers] = useState<Scorer[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const location = useLocation();
-  const idLiga = location.state?.idLiga; // aquí capturas el idLiga que mandaste desde AllLeague
-
   useEffect(() => {
-    if (!idLiga) return; // Si no hay idLiga, no busques nada
+    if (!idLiga) return;
 
     const fetchScorers = async () => {
       try {
@@ -32,7 +30,7 @@ const TopScorers: React.FC = () => {
     };
 
     fetchScorers();
-  }, [idLiga]); // cada vez que idLiga cambie, recarga
+  }, [idLiga]);
 
   if (!idLiga) {
     return <div className="text-center text-black dark:text-white">No se ha seleccionado una liga.</div>;
@@ -47,20 +45,18 @@ const TopScorers: React.FC = () => {
       <h2 className="text-[18px] font-bold uppercase mb-4">Goleadores</h2>
 
       <div className="bg-white text-white rounded-xl p-4 shadow-md border border-[#ccc] dark:bg-[#1c1f22] dark:shadow-[0_10px_20px_#111517,0_0_0px_#BEBEBE] dark:border-[#333]">
-        <div className="flex justify-end pr-4 text-sm text-gray-300">
-          <div className="w-[40px] text-center text-black dark:text-white">PJ</div>
+        <div className="flex justify-between pr-4 text-sm text-gray-300">
+          <div className="w-12 text-center ml-4 text-black dark:text-white">NOMBRE</div>
           <div className="w-[40px] text-center text-black dark:text-white">G</div>
         </div>
+
         <div className="space-y-4 mt-2">
           {scorers.map((scorer) => (
             <div key={scorer.idJugador} className="flex items-center justify-between">
-              <img
-                src={scorer.imagen}
-                alt={scorer.nombre}
-                className="w-12 h-12 rounded-full object-cover"
-              />
+              <div className="w-12 h-12 flex items-center justify-center text-center text-sm text-black dark:text-white leading-tight break-words ml-4">
+                {scorer.nombre}
+              </div>
               <div className="flex gap-4 pr-4">
-                <div className="w-[40px] text-center text-black dark:text-white">{scorer.partidosJugados}</div>
                 <div className="w-[40px] text-center text-black dark:text-white">{scorer.goles}</div>
               </div>
             </div>

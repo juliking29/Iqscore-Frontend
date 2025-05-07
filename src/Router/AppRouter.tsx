@@ -11,6 +11,8 @@ import Registro from '../views/Registro'
 import Iniciar from '../views/Login'
 import Account from '../views/Account'
 import ResetPassword from '../views/ResetPassword'
+import NotFound from '../views/404'
+import Favorites from '../views/Favorites'
 
 export const router = createBrowserRouter([
     {
@@ -22,7 +24,7 @@ export const router = createBrowserRouter([
         element: <Team />
     },
     {
-        path: '/league/:nombre',
+        path: '/league/:idLiga',
         element: <League />
     },
     {
@@ -59,10 +61,17 @@ export const router = createBrowserRouter([
         element: <ResetPassword />
     },
     {
-        path: '/Account',
+        path: '/cuenta',
         element: <Account />
     },
-
+    {
+        path: '*',
+        element: <NotFound />
+    },
+    {
+        path: '/favoritos',
+        element: <Favorites />
+    }
 
 
 ])

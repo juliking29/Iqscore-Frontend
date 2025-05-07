@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 interface Assistant {
   idJugador: number;
@@ -10,14 +10,12 @@ interface Assistant {
 }
 
 const TopAssistant: React.FC = () => {
+  const { idLiga } = useParams<{ idLiga: string }>();
   const [assistants, setAssistants] = useState<Assistant[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const location = useLocation();
-  const idLiga = location.state?.idLiga; // capturamos el idLiga que mandamos desde AllLeague
-
   useEffect(() => {
-    if (!idLiga) return; // si no hay liga seleccionada, no hacemos fetch
+    if (!idLiga) return;
 
     const fetchAssistants = async () => {
       try {
@@ -47,20 +45,18 @@ const TopAssistant: React.FC = () => {
       <h2 className="text-[18px] font-bold uppercase mb-4">Asistentes</h2>
 
       <div className="bg-white text-white rounded-xl p-4 shadow-md border border-[#ccc] dark:bg-[#1c1f22] dark:shadow-[0_10px_20px_#111517,0_0_0px_#BEBEBE] dark:border-[#333]">
-        <div className="flex justify-end pr-4 text-sm text-gray-300">
-          <div className="w-[40px] text-center text-black dark:text-white">PJ</div>
+        <div className="flex justify-between pr-4 text-sm text-gray-300">
+          <div className="w-12 text-center ml-4 text-black dark:text-white">NOMBRE</div>
           <div className="w-[40px] text-center text-black dark:text-white">A</div>
         </div>
+
         <div className="space-y-4 mt-2">
           {assistants.map((assistant) => (
             <div key={assistant.idJugador} className="flex items-center justify-between">
-              <img
-                src={assistant.imagen}
-                alt={assistant.nombre}
-                className="w-12 h-12 rounded-full object-cover"
-              />
+              <div className="w-12 h-12 flex items-center justify-center text-center text-sm text-black dark:text-white leading-tight break-words ml-4">
+                {assistant.nombre}
+              </div>
               <div className="flex gap-4 pr-4">
-                <div className="w-[40px] text-center text-black dark:text-white">{assistant.partidosJugados}</div>
                 <div className="w-[40px] text-center text-black dark:text-white">{assistant.asistencias}</div>
               </div>
             </div>

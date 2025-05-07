@@ -16,7 +16,7 @@ import {
 
 const PaymentGateway: React.FC = () => {
   const navigate = useNavigate();
-  const [selectedMethod, setSelectedMethod] = useState(null);
+  const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
   const [paymentData, setPaymentData] = useState({
     cardNumber: "",
     cardName: "",
@@ -32,7 +32,7 @@ const PaymentGateway: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const detectCardType = (number) => {
+  const detectCardType = (number: string): string | null => {
     const cleaned = number.replace(/\D/g, "");
     if (/^4/.test(cleaned)) return "visa";
     if (/^5[1-5]/.test(cleaned)) return "mastercard";
@@ -40,7 +40,7 @@ const PaymentGateway: React.FC = () => {
     return null;
   };
 
-  const handlePaymentDataChange = (e) => {
+  const handlePaymentDataChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     let formattedValue = value;
 
@@ -67,7 +67,7 @@ const PaymentGateway: React.FC = () => {
     setPaymentData((prev) => ({ ...prev, [name]: formattedValue }));
   };
 
-  const handlePaymentSubmit = (e) => {
+  const handlePaymentSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsProcessing(true);
 

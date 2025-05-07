@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { FaUser, FaCog, FaSearch, FaList } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 interface Resultado {
   resultado: string;
   [key: string]: any;
 }
 
+
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
       const savedTheme = localStorage.getItem("theme");
@@ -15,6 +19,8 @@ const Navbar: React.FC = () => {
     }
     return "light";
   });
+
+
 
   const [search, setSearch] = useState("");
   const [results, setResults] = useState<Resultado[]>([]);
@@ -62,39 +68,34 @@ const Navbar: React.FC = () => {
     }
   };
 
-  // Función para extraer información del texto del resultado
   const extractInfo = (resultText: string) => {
-    // Objeto para almacenar los datos extraídos
     const info: Record<string, string> = {};
-    
-    // Verificar qué tipo de resultado es
-    if (resultText.startsWith("Liga:")) {
-      info.tipo = "Liga";
-    } else if (resultText.startsWith("Equipo:")) {
-      info.tipo = "Equipo";
-    } else if (resultText.startsWith("Jugador:")) {
-      info.tipo = "Jugador";
-    }
-    
-    // Expresiones regulares para extraer la información
+  
+    if (resultText.startsWith("Liga:")) info.tipo = "Liga";
+    else if (resultText.startsWith("Equipo:")) info.tipo = "Equipo";
+    else if (resultText.startsWith("Jugador:")) info.tipo = "Jugador";
+  
     const nameMatch = resultText.match(/^(Liga|Equipo|Jugador): ([^,]+)/);
-    if (nameMatch) {
-      info.nombre = nameMatch[2].trim();
-    }
-    
-    // Extraer logo o imágenes
+    if (nameMatch) info.nombre = nameMatch[2].trim();
+  
     const logoMatch = resultText.match(/Logo: ([^,]+)/);
-    if (logoMatch) {
-      info.logo = logoMatch[1].trim();
-    }
-    
+    if (logoMatch) info.logo = logoMatch[1].trim();
+  
     const logoNacionalidadMatch = resultText.match(/Logo Nacionalidad: ([^,]+)/);
-    if (logoNacionalidadMatch) {
-      info.logoNacionalidad = logoNacionalidadMatch[1].trim();
-    }
-    
+    if (logoNacionalidadMatch) info.logoNacionalidad = logoNacionalidadMatch[1].trim();
+  
+    const idJugadorMatch = resultText.match(/ID Jugador: (\d+)/);
+    if (idJugadorMatch) info["ID Jugador"] = idJugadorMatch[1];
+  
+    const idEquipoMatch = resultText.match(/ID Equipo: (\d+)/);
+    if (idEquipoMatch) info["ID Equipo"] = idEquipoMatch[1];
+  
+    const idLigaMatch = resultText.match(/ID Liga: (\d+)/);
+    if (idLigaMatch) info["ID Liga"] = idLigaMatch[1];
+  
     return info;
   };
+  
 
   // Función para obtener el nombre del resultado
   const getName = (item: Resultado) => {
@@ -171,9 +172,18 @@ const Navbar: React.FC = () => {
                         key={idx}
                         className="p-2 flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-[#2c2c2c] cursor-pointer text-black dark:text-white text-sm"
                         onClick={() => {
+                          const info = extractInfo(item.resultado);
                           setSearch("");
                           setResults([]);
+                          if (info.tipo === "Equipo") {
+                            navigate(`/team/${info["ID Equipo"]}`);
+                          } else if (info.tipo === "Jugador") {
+                            navigate(`/player/${info["ID Jugador"]}`);
+                          } else if (info.tipo === "Liga") {
+                            navigate(`/league/${info["ID Liga"]}`);
+                          }
                         }}
+                        
                       >
                         <img
                           src={getImageSrc(item)}
@@ -206,13 +216,14 @@ const Navbar: React.FC = () => {
             <a href="/Teams" className="text-white hover:bg-gray-400 dark:hover:bg-[#2a2a2a] px-2 py-1 rounded-md transition duration-200 ease-in-out hover:shadow-sm">
               EQUIPOS
             </a>
-            <a href="#" className="text-white hover:bg-gray-400 dark:hover:bg-[#2a2a2a] px-2 py-1 rounded-md transition duration-200 ease-in-out hover:shadow-sm">
+            <a href="/favoritos" className="text-white hover:bg-gray-400 dark:hover:bg-[#2a2a2a] px-2 py-1 rounded-md transition duration-200 ease-in-out hover:shadow-sm">
               FAVORITOS
             </a>
 
-            <button className="bg-[#EAEAEA] py-2 px-4 rounded-md flex items-center gap-2 text-[#1D1B20] font-bold hover:bg-[#d6d6d6] transition text-sm sm:text-base">
+
+            <a href="/cuenta" className="bg-[#EAEAEA] py-2 px-4 rounded-md flex items-center gap-2 text-[#1D1B20] font-bold hover:bg-[#d6d6d6] transition text-sm sm:text-base">
               <FaUser /> <span>INICIAR</span>
-            </button>
+            </a>
 
             {/* Cog and Theme Menu */}
             <div className="relative">
@@ -288,10 +299,19 @@ const Navbar: React.FC = () => {
                     key={idx}
                     className="p-3 flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-[#2c2c2c] cursor-pointer text-black dark:text-white border-b border-gray-200 dark:border-gray-700 last:border-b-0"
                     onClick={() => {
+                      const info = extractInfo(item.resultado);
                       setSearch("");
                       setResults([]);
                       setSearchOpen(false);
+                      if (info.tipo === "Equipo") {
+                        navigate(`/team/${info["ID Equipo"]}`);
+                      } else if (info.tipo === "Jugador") {
+                        navigate(`/player/${info["ID Jugador"]}`);
+                      } else if (info.tipo === "Liga") {
+                        navigate(`/league/${info["ID Liga"]}`);
+                      }
                     }}
+                    
                   >
                     <img
                       src={getImageSrc(item)}
@@ -338,7 +358,7 @@ const Navbar: React.FC = () => {
             <span className="text-xs mt-1">Buscar</span>
           </button>
           
-          <a href="#" className="flex flex-col items-center justify-center">
+          <a href="/cuenta" className="flex flex-col items-center justify-center">
             <FaUser className="text-xl" />
             <span className="text-xs mt-1">Perfil</span>
           </a>

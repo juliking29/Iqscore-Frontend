@@ -8,7 +8,6 @@ import PartidosDelDia from '../components/common/PrincipalPage/GameDay';
 import AD1 from '../components/common/Cards/ADS/Ad1';
 import BetplayPositions from '../components/common/Cards/PositionsTable/BetplayPositions';
 import Ad2 from '../components/common/Cards/ADS/Ad2';
-import TopJugadores from '../components/common/Cards/TOPS/PlayersTops';
 import Ad3 from '../components/common/Cards/ADS/Ad3';
 import AD4 from '../components/common/Cards/ADS/Ad4';
 
@@ -134,9 +133,6 @@ const Home: React.FC = () => {
                 <BetplayPositions />
                 <Ad2 />
               </PositionAdWrapper>
-            </div>
-            <div>
-              <TopJugadores />
             </div>
             <div>
               <Ad3 />

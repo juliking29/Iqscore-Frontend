@@ -73,45 +73,52 @@ const PlayerTeam: React.FC<PlayersTeamProps> =  ({ idEquipo })  => {
   const handleTeamClick = (playerId: string) => {
     navigate(`/player/${playerId}`); // Navigate to the team page with the team ID
   };
-
   return (
-    <div className="max-w-[1240px] mx-auto mb-2 text-black dark:text-white">
-      <h3 className="text-[18px] font-bold uppercase mb-2 text-black dark:text-white">JUGADORES</h3>
-      <div className="relative bg-white dark:bg-[#1B1D20] p-6 rounded-lg shadow-lg border border-[#ccc] dark:border-[#333]">
+    <div className="max-w-[1240px] mx-auto mb-4 px-2 text-black dark:text-white">
+      <h3 className="text-[18px] font-bold uppercase mb-2">JUGADORES</h3>
+
+      <div className="relative bg-white dark:bg-[#1B1D20] p-4 rounded-lg shadow-lg border border-[#ccc] dark:border-[#333]">
         {loading ? (
           <div className="py-4 text-center">Cargando...</div>
         ) : error ? (
           <div className="py-4 text-red-500 text-center">{error}</div>
         ) : (
-          <>
-            <div className="flex items-center py-3 px-6 border-b border-[#222]">
-              <div className="w-6 mr-4 text-sm text-gray-400">#</div>
-              <span className="text-sm font-medium text-gray-400 flex-1 px-2">Jugador</span>
-              <span className="text-sm font-medium text-gray-400 w-24 px-2">Posición</span>
-              <span className="text-sm font-medium text-gray-400 w-16 px-2">Edad</span>
-              <span className="text-sm font-medium text-gray-400 w-24 px-2">Valor</span>
+          <div className="w-full ">
+            <div className="grid grid-cols-5 sm:grid-cols-5 gap-4 text-center text-sm font-medium text-gray-500 pb-2 border-b border-gray-400 dark:border-gray-700">
+              <div className="col-span-2 text-left pl-4">Jugador</div>
+              <div className="hidden sm:block">Posición</div>
+              <div className="hidden md:block">Edad</div>
+              <div className="hidden md:block">Valor</div>
             </div>
-            <div className="flex flex-col">
+
+            <div className="flex flex-col mt-2">
               {players.map((player) => (
-                <div key={player.id} className="flex items-center py-3 px-6" onClick={() => handleTeamClick(player.id.toString())}>
-                  <div className="w-6 mr-4 text-sm mb-2 text-black dark:text-white">{player.number}</div>
-                  <div className="flex items-center gap-3 flex-1">
-                  <div className="w-8 h-8 rounded-full overflow-hidden">
-                    <img src={player.image} alt={player.name} className="w-full h-full object-cover" />
+                <div
+                  key={player.id}
+                  className="grid grid-cols-5 sm:grid-cols-5 gap-4 items-center py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-[#2A2D31] transition-all duration-200"
+                  onClick={() => handleTeamClick(player.id.toString())}
+                >
+                  <div className="col-span-2 flex items-center gap-3 text-left pl-4">
+                    <img
+                      src={player.image}
+                      alt={player.name}
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                    <span className="text-sm font-medium text-black dark:text-white break-words">{player.name}</span>
                   </div>
-                    <span className="text-sm font-medium mb-2 text-black dark:text-white px-2">{player.name}</span>
+                  <div className="hidden sm:block text-sm text-black dark:text-white text-center">{player.position}</div>
+                  <div className="hidden md:block text-sm text-black dark:text-white text-center">{player.age}</div>
+                  <div className="hidden md:block text-sm text-black dark:text-white text-center">
+                    € {formatMarketValue(player.marketValue)}
                   </div>
-                  <span className="text-sm mb-2 text-black dark:text-white w-24 px-1">{player.position}</span>
-                  <span className="text-sm mb-2 text-black dark:text-white w-16 px-3">{player.age}</span>
-                  <span className="text-sm mb-2 text-black dark:text-white w-24 px-1">€ {formatMarketValue(player.marketValue)}</span>
+                  <div className="hidden md:block text-sm text-black dark:text-white text-center">{player.number}</div>
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>
   );
 };
-
 export default PlayerTeam;
