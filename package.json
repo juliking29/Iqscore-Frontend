@@ -8,8 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "serve -s dist",
-    "postinstall": "npm run build"
+    "start": "serve -s dist"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
