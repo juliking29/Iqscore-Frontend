@@ -17,7 +17,7 @@ const Iniciar = React.lazy(() => import('../views/Login'))
 const Account = React.lazy(() => import('../views/Account'))
 const ResetPassword = React.lazy(() => import('../views/ResetPassword'))
 const NotFound = React.lazy(() => import('../views/404'))
-const Favorites = React.lazy(() => import('../views/Favorites'))
+const Cuotas = React.lazy(() => import('../views/Cuotas'))
 const PaymentGateway = React.lazy(() => import('../components/common/Account/PaymentGateway'))
 
 export const router = createBrowserRouter([
@@ -113,10 +113,10 @@ export const router = createBrowserRouter([
         )
     },
     {
-        path: '/favoritos',
+        path: '/cuotas',
         element: (
             <ProtectedRoute>
-                <Favorites />
+                <Cuotas />
             </ProtectedRoute>
         )
     },
